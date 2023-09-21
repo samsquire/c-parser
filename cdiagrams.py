@@ -23,16 +23,16 @@ class Parser():
     self.identifier = ""
 
   def getchar(self):
-    if self.pos + 1 > len(self.program):
+    if self.pos + 1 >= len(self.program):
       self.end = True
       return self.last_char
     self.last_char = self.program[self.pos]
     self.pos = self.pos + 1
-    print(self.last_char)
+    # print(self.last_char)
     return self.last_char
 
   def peek(self, amount):
-    if self.pos + amount > len(self.program):
+    if self.pos + amount >= len(self.program):
       self.end = True
       return self.last_char
     peeked = self.program[self.pos + amount]
@@ -77,19 +77,33 @@ class Parser():
     if self.last_char == "/": 
       print("found slash")
       self.last_char = self.getchar()
+      print(self.last_char)
       if self.last_char == "*":
-        print("found asterisk")
+        # print("found asterisk")
         comment = ""
         self.last_char = self.getchar()
         comment += self.last_char
-        print("found char" + comment)
-        print("peeked" + self.peek(1))
-        print(not self.end, self.last_char != "*", not self.peek(1) == "/")
-        while not self.end and self.last_char != "*" and not (self.peek(1) == "/"):
-          print("found char for coment")
+        # print("found char" + comment)
+        # print("peeked" + self.peek(1))
+        # print(not self.end, self.last_char == "*" and self.peek(2) == "/")
+        while not self.end and not (self.last_char == "*" and (self.peek(0) == "/")):
+          self.last_char = self.getchar()
+          if self.last_char == "*" and self.peek(2) == "/":
+            break
+          comment += self.last_char
+          # print("multi peeked" + self.peek(1))
+        self.getchar() # consume the /
+        self.type = "comment"
+        self.comment = comment
+        return comment
+      elif self.last_char == "/":
+        comment = ""
+        self.last_char = self.getchar()
+        comment += self.last_char
+        while not self.end and self.last_char != "\n":
+          # print("found char for slash coment")
           self.last_char = self.getchar()
           comment += self.last_char
-        self.getchar() # consume the /
         self.type = "comment"
         self.comment = comment
         return comment
@@ -171,6 +185,33 @@ class Parser():
       token = self.gettoken()
       if self.type == "comment":
         ast.append(Comment(self.comment)) 
+      if token == "hash":
+        include = self.gettoken()
+        if include == "define":
+          definevar = self.gettoken()
+          value = self.gettoken()
+          print("Found define {} = {}".format(definevar, value))
+        if include == "include": 
+          lessthan = self.gettoken()
+          if lessthan == "lessthan":
+            importlocation = self.gettoken()
+            while not self.end and self.peek(1) != ">":
+              newlocation = self.gettoken()
+              if newlocation == "divide":
+                importlocation += "/"
+              else:
+                importlocation += newlocation
+              
+            print(importlocation)
+            stop = self.gettoken()
+            if stop == "stop":
+              extension = self.gettoken()
+              if extension == "h":
+                greaterthan = self.gettoken()
+                if greaterthan == "greaterthan":
+                  print("Found import #include <{}.h>".format(importlocation))
+
+      print("token", token)
       # token = self.gettoken()
       # if token == "asterisk":
       #   comment = ""
