@@ -21,6 +21,12 @@ class Parser():
     self.regex = re.compile("[a-zA-Z0-9_]")
     self.end = False
     self.identifier = ""
+    self.return_type = []
+    self.types = {
+      "int": {},
+      "void": {},
+      "char": {}
+    }
 
   def getchar(self):
     if self.pos + 1 >= len(self.program):
@@ -177,12 +183,37 @@ class Parser():
 
     print("unknown character: [{}]".format(self.last_char))
 
-
+  def parse_function(self):
+    token = self.gettoken() 
+    if token == "asterisk":  
+      self.return_type.append("*")
+      print("is a pointer {}".format(self.return_type)) 
+      token = self.gettoken() 
+    if token in self.types:
+      self.return_type.append(token)
+      name = self.gettoken() 
+    else:
+      name = token
+    self.return_type.append(name)
+    determiner = self.gettoken()
+    if determiner == "opencurly" and self.return_type[0] == "struct":
+      print("Found struct definition") 
+    elif determiner == "openbracket":
+      print("Found function, return type: {}".format(self.return_type))
+    else:
+      print("type declaration: {}".format(self.return_type))
 
   def parse(self):
     ast = []
     while not self.end:
       token = self.gettoken()
+      if token == "struct":
+        self.return_type = ["struct"]
+        self.parse_function()
+      if token in self.types:
+        self.return_type = [token]
+        self.parse_function()
+              
       if self.type == "comment":
         ast.append(Comment(self.comment)) 
       if token == "hash":
