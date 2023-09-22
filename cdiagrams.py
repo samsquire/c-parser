@@ -201,12 +201,22 @@ class Parser():
     elif determiner == "openbracket":
       print("Found function, return type: {}".format(self.return_type))
     else:
+      if determiner == "opensquare":
+        size = self.gettoken()  
+        if size.isdigit():
+          self.return_type.append(size)
+          close = self.gettoken()
+          if close == "closesquare":
+            print("end of array")
+      if determiner == "asterisk":
+        self.return_type.append("*")
       print("type declaration: {}".format(self.return_type))
 
   def parse(self):
     ast = []
     while not self.end:
       token = self.gettoken()
+      print("token", token)
       if token == "struct":
         self.return_type = ["struct"]
         self.parse_function()
@@ -242,7 +252,6 @@ class Parser():
                 if greaterthan == "greaterthan":
                   print("Found import #include <{}.h>".format(importlocation))
 
-      print("token", token)
       # token = self.gettoken()
       # if token == "asterisk":
       #   comment = ""

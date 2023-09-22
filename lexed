@@ -63,6 +63,7 @@ found slash
 /
 token  makes a function that returns 0xff
 
+token hash
 stdio
 Found import #include <stdio.h>
 token hash
@@ -103,61 +104,60 @@ found slash
 s
 sys/stat
 Found import #include <sys/stat.h>
-token hash
+token int
 Found function, return type: ['int', 'compile_stub']
 token int
 type declaration: ['int', 'function_id']
-token int
 token semicolon
-Found struct definition
 token struct
-type declaration: ['char', 'key']
+Found struct definition
 token char
-token 1024
-token closesquare
+end of array
+type declaration: ['char', 'key', '1024']
 token semicolon
-type declaration: ['int', 'len']
 token int
+type declaration: ['int', 'len']
 token closecurly
 token semicolon
-Found struct definition
 token struct
+Found struct definition
 token uintptr_t
 token value
 token semicolon
+token int
 type declaration: ['int', 'nested']
 token int
 type declaration: ['int', 'set']
-token int
 token closecurly
 token semicolon
+token struct
 Found struct definition
 token struct
-type declaration: ['struct', 'Range']
-token struct
+type declaration: ['struct', 'Range', '*']
 token asterisk
 token ranges
 token semicolon
-type declaration: ['int', 'range_length']
 token int
+type declaration: ['int', 'range_length']
 token closecurly
 token semicolon
+token struct
 Found struct definition
 token struct
-type declaration: ['struct', 'Expression']
-token struct
+type declaration: ['struct', 'Expression', '*']
 token expression
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'variable']
 token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'variable_key']
-token char
+token int
 type declaration: ['int', 'variable_length']
 token int
 type declaration: ['int', 'type']
-token int
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'symbol']
 token char
@@ -172,92 +172,91 @@ type declaration: ['char', '*', 'text']
 token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'asterisk']
-token char
 token semicolon
+token int
 type declaration: ['int', 'reference_length']
 token int
 is a pointer ['int', '*']
 type declaration: ['int', '*', 'asterisk']
-token int
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'chosen_register']
-token char
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token reference_expressions
 token semicolon
-type declaration: ['int', 'reference_expressions_length']
 token int
+type declaration: ['int', 'reference_expressions_length']
 token closecurly
 token semicolon
+token struct
 Found struct definition
 token struct
-type declaration: ['struct', 'Expression']
-token struct
+type declaration: ['struct', 'Expression', '*']
 token expression
 token semicolon
-type declaration: ['struct', 'Assignment']
 token struct
+type declaration: ['struct', 'Assignment', '*']
 token start_assignment
 token semicolon
-type declaration: ['struct', 'Assignment']
 token struct
+type declaration: ['struct', 'Assignment', '*']
 token end_assignment
 token semicolon
+token int
 type declaration: ['int', 'start_position']
 token int
 type declaration: ['int', 'end_position']
-token int
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'variable']
-token char
-type declaration: ['int', 'variable_length']
 token int
+type declaration: ['int', 'variable_length']
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'chosen_register']
-token char
 token closecurly
 token semicolon
+token struct
 Found struct definition
 token struct
-type declaration: ['struct', 'Assignment']
-token struct
+type declaration: ['struct', 'Assignment', '*']
 token assignments
 token semicolon
+token int
 type declaration: ['int', 'assignment_length']
-token int
 token closecurly
 token semicolon
-Found struct definition
 token struct
+Found struct definition
+token int
 type declaration: ['int', 'id']
-token int
-type declaration: ['struct', 'hashmap_key']
 token struct
+type declaration: ['struct', 'hashmap_key']
 token opensquare
 token MAX_SIZE
 token closesquare
 token semicolon
-type declaration: ['struct', 'hashmap_value']
 token struct
+type declaration: ['struct', 'hashmap_value']
 token opensquare
 token MAX_SIZE
 token closesquare
 token semicolon
 token closecurly
 token semicolon
+token struct
 Found struct definition
 token struct
-type declaration: ['struct', 'hashmap']
-token struct
+type declaration: ['struct', 'hashmap', '*']
 token hashmap
 token semicolon
+token int
 type declaration: ['int', 'running']
 token int
 type declaration: ['int', 'count']
-token int
 token closecurly
 token semicolon
 found slash
@@ -268,17 +267,17 @@ token unsigned
 token long
 token hash
 token unsigned
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'str']
-token char
 token opencurly
 token unsigned
 token long
 token hash
 token 5381
 token semicolon
-type declaration: ['int', 'c']
 token int
+type declaration: ['int', 'c']
 token while
 token openbracket
 token c
@@ -310,21 +309,20 @@ token divide
 token return
 token hash
 token closecurly
-Found function, return type: ['int', 'set_hashmap']
 token int
-type declaration: ['struct', 'hashmap']
+Found function, return type: ['int', 'set_hashmap']
 token struct
+type declaration: ['struct', 'hashmap', '*']
 token hashmap
 token comma
-type declaration: ['char', 'key']
 token char
-token closesquare
+type declaration: ['char', 'key']
 token comma
 token uintptr_t
 token value
 token comma
-type declaration: ['int', 'key_length']
 token int
+type declaration: ['int', 'key_length']
 token opencurly
 token unsigned
 token long
@@ -391,18 +389,17 @@ token equals
 token 1
 token semicolon
 token closecurly
-Found function, return type: ['int', 'set_hashmap_nested']
 token int
-type declaration: ['struct', 'hashmap']
+Found function, return type: ['int', 'set_hashmap_nested']
 token struct
+type declaration: ['struct', 'hashmap', '*']
 token hashmap
 token comma
-type declaration: ['char', 'key']
 token char
-token closesquare
+type declaration: ['char', 'key']
 token comma
-type declaration: ['struct', 'hashmap']
 token struct
+type declaration: ['struct', 'hashmap', '*']
 token nested
 token closebracket
 token opencurly
@@ -450,17 +447,16 @@ token greaterthan
 token id
 token semicolon
 token closecurly
-type declaration: ['struct', 'hashmap_value']
 token struct
+type declaration: ['struct', 'hashmap_value', '*']
 token get_hashmap
 token openbracket
-type declaration: ['struct', 'hashmap']
 token struct
+type declaration: ['struct', 'hashmap', '*']
 token hashmap
 token comma
-type declaration: ['char', 'key']
 token char
-token closesquare
+type declaration: ['char', 'key']
 token closebracket
 token opencurly
 token unsigned
@@ -484,25 +480,23 @@ token hsh
 token closesquare
 token semicolon
 token closecurly
-type declaration: ['struct', 'hashmap_value']
 token struct
+type declaration: ['struct', 'hashmap_value', '*']
 token get_hashmap_nested
 token openbracket
-type declaration: ['struct', 'hashmap']
 token struct
+type declaration: ['struct', 'hashmap', '*']
 token hashmaps
 token comma
-type declaration: ['struct', 'hashmap']
 token struct
+type declaration: ['struct', 'hashmap', '*']
 token hashmap
 token comma
+token char
 type declaration: ['char', 'key']
-token char
-token closesquare
 token comma
-type declaration: ['char', 'subkey']
 token char
-token closesquare
+type declaration: ['char', 'subkey']
 token closebracket
 token opencurly
 token unsigned
@@ -515,8 +509,8 @@ token closebracket
 token percent
 token MAX_SIZE
 token semicolon
-type declaration: ['int', 'nested']
 token int
+type declaration: ['int', 'nested']
 token openbracket
 token asterisk
 token hashmap
@@ -542,25 +536,25 @@ token subkey
 token closebracket
 token semicolon
 token closecurly
+token void
 is a pointer ['void', '*']
 Found function, return type: ['void', '*', 'clone_benchmark']
 token void
 is a pointer ['void', '*']
 type declaration: ['void', '*', 'args']
-token void
 token opencurly
-type declaration: ['struct', 'work_def']
 token struct
+type declaration: ['struct', 'work_def', '*']
 token work
 token equals
 token args
 token semicolon
-type declaration: ['int', 'current']
 token int
+type declaration: ['int', 'current']
 token 0
 token semicolon
-type declaration: ['struct', 'hashmap']
 token struct
+type declaration: ['struct', 'hashmap', '*']
 token hashmaps
 token equals
 token calloc
@@ -569,8 +563,8 @@ token MAX_SIZE
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'hashmap']
 token struct
+type declaration: ['struct', 'hashmap']
 token closebracket
 token semicolon
 token printf
@@ -590,8 +584,8 @@ token MAX_SIZE
 token asterisk
 token sizeof
 token openbracket
-type declaration: ['struct', 'hashmap']
 token struct
+type declaration: ['struct', 'hashmap']
 found slash
  
 token divide
@@ -634,8 +628,8 @@ token hashmap
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'hashmap']
 token struct
+type declaration: ['struct', 'hashmap']
 token closebracket
 token semicolon
 token current
@@ -653,10 +647,10 @@ token plus
 token semicolon
 token closecurly
 token closecurly
-Found function, return type: ['int', 'convert_to_hex']
 token int
-type declaration: ['char', 'c']
+Found function, return type: ['int', 'convert_to_hex']
 token char
+type declaration: ['char', 'c']
 token opencurly
 token if
 token openbracket
@@ -757,8 +751,8 @@ token __LINE__
 token comma
 token quote
 token illegal
-type declaration: ['char', 'backslash']
 token char
+type declaration: ['char', 'backslash']
 token quote
 token closebracket
 token semicolon
@@ -772,14 +766,15 @@ found slash
 /
 token  types
 
+token hash
 Found define NUMBER = 1
 token hash
 Found define STRING = 2
-token hash
 found slash
 /
 token  ast nodes
 
+token hash
 Found define ASSIGNMENT = 0
 token hash
 Found define REFERENCE = 1
@@ -799,48 +794,47 @@ token hash
 Found define MULTIPLY = 8
 token hash
 Found define RETURN = 9
-token hash
 found slash
 /
 token  assignment nodes
 
+token hash
 Found define VARIABLE = 0
 token hash
 Found define REFERENCE = 1
-token hash
 found slash
 /
 token  tags
 
-Found define IS_AST_METADATA = 1
 token hash
-Found struct definition
+Found define IS_AST_METADATA = 1
 token struct
+Found struct definition
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'name']
 token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'type']
-token char
-type declaration: ['int', 'namelength']
 token int
+type declaration: ['int', 'namelength']
 token closecurly
 token semicolon
+token struct
 Found struct definition
 token struct
-type declaration: ['struct', 'Function']
-token struct
+type declaration: ['struct', 'Function', '*']
 token asterisk
 token functions
 token semicolon
-type declaration: ['struct', 'NormalForm']
 token struct
+type declaration: ['struct', 'NormalForm', '*']
 token anf
 token semicolon
-type declaration: ['int', 'function_length']
 token int
-type declaration: ['struct', 'CodeGenContext']
+type declaration: ['int', 'function_length']
 token struct
+type declaration: ['struct', 'CodeGenContext', '*']
 token codegen_context
 token semicolon
 token long
@@ -849,214 +843,214 @@ token heap_start
 token semicolon
 token closecurly
 token semicolon
-Found struct definition
 token struct
+Found struct definition
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'name']
-token char
-type declaration: ['int', 'id']
 token int
-type declaration: ['struct', 'Parameter']
+type declaration: ['int', 'id']
 token struct
+type declaration: ['struct', 'Parameter', '*']
 token asterisk
 token parameters
 token semicolon
+token int
 type declaration: ['int', 'parameter_length']
 token int
 type declaration: ['int', 'expression_length']
-token int
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token expressions
 token semicolon
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token asterisk
 token exps
 token semicolon
-type declaration: ['struct', 'StatementSource']
 token struct
+type declaration: ['struct', 'StatementSource', '*']
 token statements
 token semicolon
-type declaration: ['struct', 'NormalForm']
 token struct
+type declaration: ['struct', 'NormalForm', '*']
 token anf
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'code']
-token char
-type declaration: ['struct', 'FunctionContext']
 token struct
+type declaration: ['struct', 'FunctionContext', '*']
 token context
 token semicolon
-type declaration: ['int', 'compiled']
 token int
-type declaration: ['struct', 'Callsite']
+type declaration: ['int', 'compiled']
 token struct
+type declaration: ['struct', 'Callsite', '*']
 token asterisk
 token callsites
 token semicolon
+token int
 type declaration: ['int', 'callsite_length']
 token int
 type declaration: ['int', 'global']
-token int
 token closecurly
 token semicolon
+token struct
 Found struct definition
 token struct
-type declaration: ['struct', 'Function']
-token struct
+type declaration: ['struct', 'Function', '*']
 token function
 token semicolon
-type declaration: ['struct', 'FunctionContext']
 token struct
+type declaration: ['struct', 'FunctionContext', '*']
 token function_context
 token semicolon
-type declaration: ['int', 'pc']
 token int
+type declaration: ['int', 'pc']
 token closecurly
 token semicolon
-Found struct definition
 token struct
+Found struct definition
+token int
 type declaration: ['int', 'id']
 token int
 type declaration: ['int', 'type']
-token int
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token asterisk
 token exps
 token semicolon
-type declaration: ['struct', 'StatementSource']
 token struct
+type declaration: ['struct', 'StatementSource', '*']
 token statements
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'stringvalue']
-token char
+token int
 type declaration: ['int', 'stringlength']
 token int
 type declaration: ['int', 'numbervalue']
-token int
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'symbol']
 token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'variable']
-token char
+token int
 type declaration: ['int', 'variable_length']
 token int
 type declaration: ['int', 'assigned']
 token int
 type declaration: ['int', 'tag']
-token int
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'chosen_register']
-token char
-type declaration: ['int', 'token_type']
 token int
+type declaration: ['int', 'token_type']
 token closecurly
 token semicolon
+token struct
 Found struct definition
 token struct
-type declaration: ['struct', 'Expression']
-token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token expressions
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token asterisk
 token current_into
 token semicolon
+token int
 type declaration: ['int', 'expression_length']
-token int
 token closecurly
 token semicolon
-Found struct definition
 token struct
+Found struct definition
+token int
 type declaration: ['int', 'statements']
-token int
 token closecurly
 token semicolon
-Found struct definition
 token struct
+Found struct definition
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'last_char']
-token char
-type declaration: ['int', 'pos']
 token int
+type declaration: ['int', 'pos']
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'program_body']
-token char
+token int
 type declaration: ['int', 'end']
 token int
 type declaration: ['int', 'length']
 token int
 type declaration: ['int', 'start']
-token int
-type declaration: ['struct', 'Function']
 token struct
+type declaration: ['struct', 'Function', '*']
 token asterisk
 token functions
 token semicolon
+token int
 type declaration: ['int', 'function_length']
 token int
 type declaration: ['int', 'precedence']
-token int
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token asterisk
 token exps
 token semicolon
-type declaration: ['struct', 'StatementSource']
 token struct
+type declaration: ['struct', 'StatementSource', '*']
 token statements
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'last_token']
-token char
+token int
 type declaration: ['int', 'current_id']
 token int
 type declaration: ['int', 'token_type']
-token int
 token closecurly
 token semicolon
+token struct
 Found struct definition
 token struct
-type declaration: ['struct', 'Expression']
-token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token expressions
 token semicolon
-type declaration: ['int', 'count']
 token int
-type declaration: ['struct', 'AssignmentPair']
+type declaration: ['int', 'count']
 token struct
+type declaration: ['struct', 'AssignmentPair', '*']
 token assignment_pair
 token semicolon
 token closecurly
 token semicolon
+token struct
 Found struct definition
 token struct
-type declaration: ['struct', 'Function']
-token struct
+type declaration: ['struct', 'Function', '*']
 token asterisk
 token global_functions
 token semicolon
-type declaration: ['struct', 'Function']
 token struct
+type declaration: ['struct', 'Function', '*']
 token asterisk
 token user_functions
 token semicolon
+token int
 type declaration: ['int', 'function_length']
 token int
 type declaration: ['int', 'global_function_length']
-token int
-type declaration: ['struct', 'FunctionContext']
 token struct
+type declaration: ['struct', 'FunctionContext', '*']
 token main_function_context
 token semicolon
 token long
@@ -1065,43 +1059,43 @@ token heap_start
 token semicolon
 token closecurly
 token semicolon
-type declaration: ['struct', 'CodeGenContext']
 token struct
+type declaration: ['struct', 'CodeGenContext', '*']
 token CODEGEN_CONTEXT
 token semicolon
+token struct
 Found struct definition
-token struct
-type declaration: ['int', 'pc']
 token int
-type declaration: ['struct', 'Function']
+type declaration: ['int', 'pc']
 token struct
+type declaration: ['struct', 'Function', '*']
 token function
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'code']
-token char
 token closecurly
 token semicolon
-Found define BUF_SIZE = 1024
 token hash
+Found define BUF_SIZE = 1024
+token int
 Found function, return type: ['int', 'dump_expressions']
 token int
 type declaration: ['int', 'count']
-token int
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token exps
 token closebracket
 token opencurly
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'spaces']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token count
 token plus
 token 1
@@ -1111,8 +1105,8 @@ token spaces
 token opensquare
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token count
 token closesquare
 token equals
@@ -1123,8 +1117,8 @@ token singlequote
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token 0
 token semicolon
 token x
@@ -1145,8 +1139,8 @@ token singlequote
 token singlequote
 token semicolon
 token closecurly
-type declaration: ['int', 'expression_length']
 token int
+type declaration: ['int', 'expression_length']
 token exps
 token minus
 token greaterthan
@@ -1156,8 +1150,8 @@ found slash
 /
 token  printf("Has %d expressions", expression_length);
 
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token expressions
 token equals
@@ -1168,8 +1162,8 @@ token expressions
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token 0
 token semicolon
 token x
@@ -1181,8 +1175,8 @@ token plus
 token plus
 token closebracket
 token opencurly
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token expression
 token equals
 token expressions
@@ -1420,8 +1414,8 @@ token semicolon
 token closecurly
 token for
 token openbracket
-type declaration: ['int', 'y']
 token int
+type declaration: ['int', 'y']
 token 0
 token semicolon
 token y
@@ -1478,11 +1472,11 @@ token closecurly
 token closecurly
 token closecurly
 token closecurly
+token char
 is a pointer ['char', '*']
 Found function, return type: ['char', '*', 'charget']
-token char
-type declaration: ['struct', 'ParseResult']
 token struct
+type declaration: ['struct', 'ParseResult', '*']
 token parse_result
 token closebracket
 token opencurly
@@ -1493,16 +1487,16 @@ token start
 token equals
 token 0
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'last_char']
-token char
 token malloc
 token openbracket
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 2
 token closebracket
 token closebracket
@@ -1595,16 +1589,16 @@ token return
 token last_char
 token semicolon
 token closecurly
+token char
 is a pointer ['char', '*']
 Found function, return type: ['char', '*', '_gettok']
-token char
-type declaration: ['struct', 'ParseResult']
 token struct
+type declaration: ['struct', 'ParseResult', '*']
 token parse_result
 token comma
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'caller']
-token char
 token opencurly
 found slash
 /
@@ -2190,8 +2184,8 @@ token divide
 token PCRE2_SPTR
 token name_table
 token semicolon
-type declaration: ['int', 'errornumber']
 token int
+type declaration: ['int', 'errornumber']
 token PCRE2_SIZE
 token erroroffset
 token semicolon
@@ -2199,8 +2193,8 @@ token PCRE2_SIZE
 token asterisk
 token ovector
 token semicolon
-type declaration: ['int', 'i']
 token int
+type declaration: ['int', 'i']
 token size_t
 token subject_length
 token equals
@@ -2210,9 +2204,9 @@ found slash
 /
 token  pcre2_code *pcre2_compile(PCRE2_SPTR pattern, PCRE2_SIZE length, uint32_t options, int *errorcode, PCRE2_SIZE *erroroffset, pcre2_compile_context *ccontext);
 
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'regex']
-token char
 token quote
 token caret
 token opensquare
@@ -2321,8 +2315,8 @@ token comma
 token NULL
 token closebracket
 token semicolon
-type declaration: ['int', 'rc']
 token int
+type declaration: ['int', 'rc']
 token pcre2_match
 token openbracket
 token re
@@ -2395,19 +2389,19 @@ token greaterthan
 token 0
 token closebracket
 token opencurly
-type declaration: ['int', 'size']
 token int
+type declaration: ['int', 'size']
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 100
 token plus
 token 1
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'identifier']
-token char
 token malloc
 token openbracket
 token size
@@ -2425,8 +2419,8 @@ token comma
 token size
 token closebracket
 token semicolon
-type declaration: ['int', 'count']
 token int
+type declaration: ['int', 'count']
 token 0
 token semicolon
 found slash
@@ -2759,14 +2753,14 @@ token openbracket
 token re
 token closebracket
 token semicolon
-type declaration: ['int', 'is_number']
 token int
+type declaration: ['int', 'is_number']
 token 1
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'c']
 token int
+type declaration: ['int', 'c']
 token 0
 token semicolon
 token c
@@ -2865,9 +2859,9 @@ token equals
 token 0
 token closebracket
 token opencurly
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'quoteregex']
-token char
 token quote
 token opensquare
 token caret
@@ -3065,19 +3059,19 @@ token greaterthan
 token 0
 token closebracket
 token opencurly
-type declaration: ['int', 'size']
 token int
+type declaration: ['int', 'size']
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 100
 token plus
 token 1
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'identifier']
-token char
 token malloc
 token openbracket
 token size
@@ -3095,8 +3089,8 @@ token comma
 token size
 token closebracket
 token semicolon
-type declaration: ['int', 'count']
 token int
+type declaration: ['int', 'count']
 token 0
 token semicolon
 found slash
@@ -3467,9 +3461,8 @@ token printf
 token openbracket
 token quote
 token Unknown
-type declaration: ['char', 'colon']
 token char
-token percent
+type declaration: ['char', 'colon']
 token s
 token closesquare
 token percent
@@ -3495,20 +3488,20 @@ token unknown
 token quote
 token semicolon
 token closecurly
+token char
 is a pointer ['char', '*']
 Found function, return type: ['char', '*', 'gettok']
-token char
-type declaration: ['struct', 'ParseResult']
 token struct
+type declaration: ['struct', 'ParseResult', '*']
 token parse_result
 token comma
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'caller']
-token char
 token opencurly
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'token']
-token char
 token _gettok
 token openbracket
 token parse_result
@@ -3527,26 +3520,26 @@ token return
 token token
 token semicolon
 token closecurly
-Found function, return type: ['int', 'subsume']
 token int
-type declaration: ['struct', 'ExpressionSource']
+Found function, return type: ['int', 'subsume']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token asterisk
 token statements
 token comma
-type declaration: ['struct', 'StatementSource']
 token struct
+type declaration: ['struct', 'StatementSource', '*']
 token statementsource
 token comma
-type declaration: ['int', 'type']
 token int
-type declaration: ['struct', 'ParseResult']
+type declaration: ['int', 'type']
 token struct
+type declaration: ['struct', 'ParseResult', '*']
 token parse_result
 token closebracket
 token opencurly
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token asterisk
 token _newstatements2
 token equals
@@ -3556,32 +3549,32 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource']
 token closebracket
 token semicolon
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token _newexps
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource']
 token closebracket
 token semicolon
-type declaration: ['struct', 'StatementSource']
 token struct
+type declaration: ['struct', 'StatementSource', '*']
 token _newstatementsource3
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'StatementSource']
 token struct
+type declaration: ['struct', 'StatementSource']
 token closebracket
 token semicolon
 token _newstatementsource3
@@ -3645,16 +3638,16 @@ token minus
 token greaterthan
 token current_into
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token _add
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression']
 token closebracket
 token semicolon
 token _add
@@ -3697,8 +3690,8 @@ token closesquare
 token equals
 token _newexps
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token _newroot
 token equals
@@ -3708,8 +3701,8 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token closebracket
 token closebracket
 token semicolon
@@ -3791,40 +3784,40 @@ token equals
 token _add
 token semicolon
 token closecurly
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token asterisk
 token parse_expressions
 token openbracket
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'caller']
-token char
-type declaration: ['struct', 'StatementSource']
 token struct
+type declaration: ['struct', 'StatementSource', '*']
 token statementsource
 token comma
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token asterisk
 token statements
 token comma
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token head
 token comma
-type declaration: ['struct', 'ParseResult']
 token struct
+type declaration: ['struct', 'ParseResult', '*']
 token parse_result
 token comma
-type declaration: ['int', 'usetokenstop']
 token int
+type declaration: ['int', 'usetokenstop']
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'tokenstop']
-token char
 token opencurly
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'token']
-token char
 found slash
 *
 token 
@@ -3960,32 +3953,32 @@ token comma
 token caller
 token closebracket
 token semicolon
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token _newline3
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource']
 token closebracket
 token semicolon
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token _emptyline3
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource']
 token closebracket
 token semicolon
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token asterisk
 token _empty5
 token equals
@@ -3993,13 +3986,13 @@ token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token closebracket
 token closebracket
 token semicolon
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token asterisk
 token _empty6
 token equals
@@ -4007,13 +4000,13 @@ token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token closebracket
 token closebracket
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token _new_expressions3
 token equals
@@ -4023,13 +4016,13 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token closebracket
 token closebracket
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token _returnexpressions
 token equals
@@ -4039,13 +4032,13 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token closebracket
 token closebracket
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token _exprs2
 token equals
 token calloc
@@ -4054,12 +4047,12 @@ token 1
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression']
 token closebracket
 token semicolon
-type declaration: ['struct', 'StatementSource']
 token struct
+type declaration: ['struct', 'StatementSource', '*']
 token _newstatementsource
 token equals
 token calloc
@@ -4068,12 +4061,12 @@ token 1
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'StatementSource']
 token struct
+type declaration: ['struct', 'StatementSource']
 token closebracket
 token semicolon
-type declaration: ['struct', 'StatementSource']
 token struct
+type declaration: ['struct', 'StatementSource', '*']
 token _newstatementsource2
 token equals
 token calloc
@@ -4082,20 +4075,20 @@ token 1
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'StatementSource']
 token struct
+type declaration: ['struct', 'StatementSource']
 token closebracket
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token _return
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression']
 token closebracket
 token semicolon
 token printf
@@ -4304,8 +4297,8 @@ found slash
 /
 token  case add
 
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token asterisk
 token _newstatements2
 token equals
@@ -4315,32 +4308,32 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource']
 token closebracket
 token semicolon
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token _newexps
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource']
 token closebracket
 token semicolon
-type declaration: ['struct', 'StatementSource']
 token struct
+type declaration: ['struct', 'StatementSource', '*']
 token _newstatementsource3
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'StatementSource']
 token struct
+type declaration: ['struct', 'StatementSource']
 token closebracket
 token semicolon
 token _newstatementsource3
@@ -4404,16 +4397,16 @@ token minus
 token greaterthan
 token current_into
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token _add
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression']
 token closebracket
 token semicolon
 token _add
@@ -4465,8 +4458,8 @@ token closesquare
 token equals
 token _newexps
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token _newroot
 token equals
@@ -4476,8 +4469,8 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token closebracket
 token closebracket
 token semicolon
@@ -4588,8 +4581,8 @@ token n
 token quote
 token closebracket
 token semicolon
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token asterisk
 token newstatements2
 token equals
@@ -4599,32 +4592,32 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource']
 token closebracket
 token semicolon
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token newexps
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource']
 token closebracket
 token semicolon
-type declaration: ['struct', 'StatementSource']
 token struct
+type declaration: ['struct', 'StatementSource', '*']
 token newstatementsource3
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'StatementSource']
 token struct
+type declaration: ['struct', 'StatementSource']
 token closebracket
 token semicolon
 token newstatementsource3
@@ -4688,16 +4681,16 @@ token minus
 token greaterthan
 token current_into
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token member
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression']
 token closebracket
 token semicolon
 token member
@@ -4749,8 +4742,8 @@ token closesquare
 token equals
 token newexps
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token newroot
 token equals
@@ -4760,8 +4753,8 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token closebracket
 token closebracket
 token semicolon
@@ -4890,32 +4883,32 @@ token comma
 token caller
 token closebracket
 token semicolon
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token _newline2
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource']
 token closebracket
 token semicolon
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token _emptyline2
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource']
 token closebracket
 token semicolon
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token asterisk
 token _empty4
 token equals
@@ -4923,13 +4916,13 @@ token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token closebracket
 token closebracket
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token _new_expressions2
 token equals
@@ -4939,13 +4932,13 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token closebracket
 token closebracket
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token _exprs
 token equals
 token calloc
@@ -4954,8 +4947,8 @@ token 1
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression']
 token closebracket
 token semicolon
 token statementsource
@@ -5059,8 +5052,8 @@ token 1
 token closesquare
 token closebracket
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token owner
 token equals
@@ -5077,8 +5070,8 @@ token minus
 token greaterthan
 token expressions
 token semicolon
-type declaration: ['int', 'owner_size']
 token int
+type declaration: ['int', 'owner_size']
 token statements
 token opensquare
 token statementsource
@@ -5092,8 +5085,8 @@ token minus
 token greaterthan
 token expression_length
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token asterisk
 token owner_into
@@ -5111,8 +5104,8 @@ token minus
 token greaterthan
 token current_into
 token semicolon
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token asterisk
 token _newstatements
 token equals
@@ -5122,13 +5115,13 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token closebracket
 token closebracket
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token empty
 token equals
@@ -5138,13 +5131,13 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token closebracket
 token closebracket
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token method_call_expressions
 token equals
@@ -5154,8 +5147,8 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token closebracket
 token closebracket
 token semicolon
@@ -5185,44 +5178,44 @@ token tag
 token equals
 token IS_AST_METADATA
 token semicolon
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token expression_exps
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource']
 token closebracket
 token semicolon
-type declaration: ['struct', 'StatementSource']
 token struct
+type declaration: ['struct', 'StatementSource', '*']
 token newstatementsource2
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'StatementSource']
 token struct
+type declaration: ['struct', 'StatementSource']
 token closebracket
 token semicolon
 found slash
 /
 token  struct Expression ** expressions = calloc(100, sizeof(struct Expression*)); 
 
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token method_call
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression']
 token closebracket
 token semicolon
 token owner
@@ -5412,9 +5405,9 @@ token 1
 token closesquare
 token closebracket
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'tokenstop']
-token char
 token quote
 token close
 token quote
@@ -5456,15 +5449,15 @@ token n
 token quote
 token closebracket
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'before']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 2
 token closebracket
 token semicolon
@@ -5499,8 +5492,8 @@ token comma
 token 2
 token closebracket
 token semicolon
-type declaration: ['int', 'pos']
 token int
+type declaration: ['int', 'pos']
 token parse_result
 token minus
 token greaterthan
@@ -5597,32 +5590,32 @@ token comma
 token caller
 token closebracket
 token semicolon
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token newline2
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource']
 token closebracket
 token semicolon
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token emptyline2
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource']
 token closebracket
 token semicolon
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token asterisk
 token empty4
 token equals
@@ -5630,13 +5623,13 @@ token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token closebracket
 token closebracket
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token new_expressions
 token equals
@@ -5646,13 +5639,13 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token closebracket
 token closebracket
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token exprs
 token equals
 token calloc
@@ -5661,8 +5654,8 @@ token 1
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression']
 token closebracket
 token semicolon
 token statementsource
@@ -5734,16 +5727,16 @@ token comma
 token token
 token closebracket
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token identifier
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression']
 token closebracket
 token semicolon
 token identifier
@@ -5770,9 +5763,9 @@ token minus
 token greaterthan
 token token_type
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'first_non_number']
-token char
 token if
 token openbracket
 token parse_result
@@ -5800,8 +5793,8 @@ token 10
 token closebracket
 token semicolon
 token closecurly
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token asterisk
 token newstatements
 token equals
@@ -5811,37 +5804,37 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token closebracket
 token closebracket
 token semicolon
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token identifierexps
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource']
 token closebracket
 token semicolon
-type declaration: ['struct', 'StatementSource']
 token struct
+type declaration: ['struct', 'StatementSource', '*']
 token newstatementsource
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'StatementSource']
 token struct
+type declaration: ['struct', 'StatementSource']
 token closebracket
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token identifierexpressions
 token equals
@@ -5851,8 +5844,8 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token closebracket
 token closebracket
 token semicolon
@@ -5987,8 +5980,8 @@ token 1
 token closesquare
 token closebracket
 token semicolon
-type declaration: ['int', 'new_position']
 token int
+type declaration: ['int', 'new_position']
 token statements
 token opensquare
 token statementsource
@@ -6090,33 +6083,33 @@ token return
 token statements
 token semicolon
 token closecurly
-type declaration: ['struct', 'ParseResult']
 token struct
+type declaration: ['struct', 'ParseResult', '*']
 token continue_parse
 token openbracket
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'caller']
-token char
-type declaration: ['struct', 'StatementSource']
 token struct
+type declaration: ['struct', 'StatementSource', '*']
 token statementsource
 token comma
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token asterisk
 token statements
 token comma
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token head
 token comma
-type declaration: ['struct', 'ParseResult']
 token struct
+type declaration: ['struct', 'ParseResult', '*']
 token parse_result
 token closebracket
 token opencurly
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token expressions
 token semicolon
@@ -6130,9 +6123,9 @@ token n
 token quote
 token closebracket
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'token']
-token char
 token gettok
 token openbracket
 token parse_result
@@ -6166,9 +6159,9 @@ found slash
 /
 token  case function
 
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'function_name']
-token char
 token gettok
 token openbracket
 token parse_result
@@ -6178,20 +6171,20 @@ token functionbodybegin
 token quote
 token closebracket
 token semicolon
-type declaration: ['struct', 'Function']
 token struct
+type declaration: ['struct', 'Function', '*']
 token function
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'Function']
 token struct
+type declaration: ['struct', 'Function']
 token closebracket
 token semicolon
-type declaration: ['struct', 'Callsite']
 token struct
+type declaration: ['struct', 'Callsite', '*']
 token asterisk
 token callsites
 token equals
@@ -6201,8 +6194,8 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Callsite']
 token struct
+type declaration: ['struct', 'Callsite', '*']
 token closebracket
 token closebracket
 token semicolon
@@ -6240,8 +6233,8 @@ token function_length
 token plus
 token plus
 token semicolon
-type declaration: ['struct', 'Parameter']
 token struct
+type declaration: ['struct', 'Parameter', '*']
 token asterisk
 token parameters
 token equals
@@ -6251,8 +6244,8 @@ token 10
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Parameter']
 token struct
+type declaration: ['struct', 'Parameter', '*']
 token closebracket
 token closebracket
 token semicolon
@@ -6285,9 +6278,9 @@ token comma
 token function_name
 token closebracket
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'open']
-token char
 token gettok
 token openbracket
 token parse_result
@@ -6371,9 +6364,9 @@ token equals
 token 0
 token closebracket
 token opencurly
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'type']
-token char
 token if
 token openbracket
 token strcmp
@@ -6381,8 +6374,8 @@ token openbracket
 token token
 token comma
 token quote
-type declaration: ['int', 'quote']
 token int
+type declaration: ['int', 'quote']
 token equals
 token equals
 token 0
@@ -6413,9 +6406,9 @@ token equals
 token token
 token semicolon
 token closecurly
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'name']
-token char
 token gettok
 token openbracket
 token parse_result
@@ -6445,28 +6438,28 @@ token comma
 token name
 token closebracket
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'before']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 2
 token closebracket
 token semicolon
-type declaration: ['struct', 'Parameter']
 token struct
+type declaration: ['struct', 'Parameter', '*']
 token parameter
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'Parameter']
 token struct
+type declaration: ['struct', 'Parameter']
 token closebracket
 token semicolon
 token parameter
@@ -6525,8 +6518,8 @@ token comma
 token 2
 token closebracket
 token semicolon
-type declaration: ['int', 'pos']
 token int
+type declaration: ['int', 'pos']
 token parse_result
 token minus
 token greaterthan
@@ -6578,9 +6571,9 @@ token pos
 token semicolon
 token closecurly
 token closecurly
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'curlyopen']
-token char
 token gettok
 token openbracket
 token parse_result
@@ -6619,8 +6612,8 @@ token quote
 token closebracket
 token semicolon
 token closecurly
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token newinto
 token equals
@@ -6630,13 +6623,13 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token closebracket
 token closebracket
 token semicolon
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token asterisk
 token _newstatements
 token equals
@@ -6646,13 +6639,13 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token closebracket
 token closebracket
 token semicolon
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token newexps
 token equals
 token calloc
@@ -6661,12 +6654,12 @@ token 1
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource']
 token closebracket
 token semicolon
-type declaration: ['struct', 'StatementSource']
 token struct
+type declaration: ['struct', 'StatementSource', '*']
 token newstatementsource
 token equals
 token calloc
@@ -6675,8 +6668,8 @@ token 1
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'StatementSource']
 token struct
+type declaration: ['struct', 'StatementSource']
 token closebracket
 token semicolon
 token function
@@ -6742,8 +6735,8 @@ token comma
 token newinto
 token closebracket
 token semicolon
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token asterisk
 token returnedexps
 token equals
@@ -6848,20 +6841,20 @@ token comma
 token token
 token closebracket
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token identifier
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression']
 token closebracket
 token semicolon
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token asterisk
 token newstatements
 token equals
@@ -6869,37 +6862,37 @@ token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token closebracket
 token closebracket
 token semicolon
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token identifierexps
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource']
 token closebracket
 token semicolon
-type declaration: ['struct', 'StatementSource']
 token struct
+type declaration: ['struct', 'StatementSource', '*']
 token _newstatementsource
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'StatementSource']
 token struct
+type declaration: ['struct', 'StatementSource']
 token closebracket
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token expression
 token equals
@@ -6909,8 +6902,8 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression']
 token closebracket
 token semicolon
 token _newstatementsource
@@ -7003,8 +6996,8 @@ token statements
 token equals
 token _newstatementsource
 token semicolon
-type declaration: ['int', 'new_position']
 token int
+type declaration: ['int', 'new_position']
 token statements
 token opensquare
 token statementsource
@@ -7082,12 +7075,12 @@ token closesquare
 token equals
 token identifier
 token semicolon
-type declaration: ['int', 'expressions_count']
 token int
+type declaration: ['int', 'expressions_count']
 token 0
 token semicolon
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token asterisk
 token expressions
 token equals
@@ -7121,30 +7114,30 @@ found slash
 /
 token  rootparse
 
-type declaration: ['struct', 'ParseResult']
 token struct
+type declaration: ['struct', 'ParseResult', '*']
 token parse
 token openbracket
-type declaration: ['int', 'length']
 token int
+type declaration: ['int', 'length']
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'program_body']
-token char
 token opencurly
-type declaration: ['struct', 'ParseResult']
 token struct
+type declaration: ['struct', 'ParseResult', '*']
 token parse_result
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'ParseResult']
 token struct
+type declaration: ['struct', 'ParseResult']
 token closebracket
 token semicolon
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token asterisk
 token statements
 token equals
@@ -7152,33 +7145,33 @@ token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token closebracket
 token closebracket
 token semicolon
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token exps
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource']
 token closebracket
 token semicolon
-type declaration: ['struct', 'StatementSource']
 token struct
+type declaration: ['struct', 'StatementSource', '*']
 token statementsource
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'StatementSource']
 token struct
+type declaration: ['struct', 'StatementSource']
 token closebracket
 token semicolon
 token parse_result
@@ -7223,16 +7216,16 @@ token program_body
 token equals
 token program_body
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'last_char']
-token char
 token malloc
 token openbracket
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 2
 token closebracket
 token closebracket
@@ -7294,8 +7287,8 @@ token start
 token equals
 token 1
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token root
 token equals
@@ -7305,8 +7298,8 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token closebracket
 token closebracket
@@ -7347,10 +7340,9 @@ token comma
 token root
 token closebracket
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'keywords']
-token char
-token closesquare
 token equals
 token opencurly
 token quote
@@ -7437,8 +7429,8 @@ token closebracket
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token 0
 token semicolon
 token x
@@ -7496,8 +7488,8 @@ token n
 token quote
 token closebracket
 token semicolon
-type declaration: ['struct', 'Function']
 token struct
+type declaration: ['struct', 'Function', '*']
 token asterisk
 token functions
 token equals
@@ -7507,8 +7499,8 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Function']
 token struct
+type declaration: ['struct', 'Function', '*']
 token closebracket
 token closebracket
 token semicolon
@@ -7550,10 +7542,10 @@ token parse_result
 token closebracket
 token semicolon
 token closecurly
-Found function, return type: ['int', 'dump_function']
 token int
-type declaration: ['struct', 'Function']
+Found function, return type: ['int', 'dump_function']
 token struct
+type declaration: ['struct', 'Function', '*']
 token function
 token closebracket
 token opencurly
@@ -7586,8 +7578,8 @@ token closebracket
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token 0
 token semicolon
 token x
@@ -7673,8 +7665,8 @@ token closebracket
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token 0
 token semicolon
 token x
@@ -7722,21 +7714,21 @@ found slash
 
 
 token divide
-Found function, return type: ['int', 'descendanf']
 token int
-type declaration: ['struct', 'NormalForm']
+Found function, return type: ['int', 'descendanf']
 token struct
+type declaration: ['struct', 'NormalForm', '*']
 token anf
 token comma
-type declaration: ['struct', 'ExpressionSource']
 token struct
+type declaration: ['struct', 'ExpressionSource', '*']
 token expressions
 token closebracket
 token opencurly
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token expressions
 token minus
 token greaterthan
@@ -7764,8 +7756,8 @@ token  for (int y = 0 ; y < expressions->expressions[x]->statements->statements 
 
 token for
 token openbracket
-type declaration: ['int', 'y']
 token int
+type declaration: ['int', 'y']
 token expressions
 token minus
 token greaterthan
@@ -7835,37 +7827,37 @@ token closesquare
 token semicolon
 token closecurly
 token closecurly
-type declaration: ['struct', 'ANF']
 token struct
+type declaration: ['struct', 'ANF', '*']
 token normalform
 token openbracket
-type declaration: ['struct', 'ParseResult']
 token struct
+type declaration: ['struct', 'ParseResult', '*']
 token parse_result
 token closebracket
 token opencurly
-type declaration: ['struct', 'ANF']
 token struct
+type declaration: ['struct', 'ANF', '*']
 token result
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'ANF']
 token struct
+type declaration: ['struct', 'ANF']
 token closebracket
 token semicolon
-type declaration: ['struct', 'NormalForm']
 token struct
+type declaration: ['struct', 'NormalForm', '*']
 token anf
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'NormalForm']
 token struct
+type declaration: ['struct', 'NormalForm']
 token closebracket
 token semicolon
 token result
@@ -7887,8 +7879,8 @@ token functions
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token 0
 token semicolon
 token x
@@ -7927,8 +7919,8 @@ token minus
 token greaterthan
 token function_length
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token expressions
 token equals
@@ -7938,8 +7930,8 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token closebracket
 token closebracket
 token semicolon
@@ -7959,8 +7951,8 @@ token 0
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token 0
 token semicolon
 token x
@@ -7975,20 +7967,20 @@ token plus
 token plus
 token closebracket
 token opencurly
-type declaration: ['struct', 'NormalForm']
 token struct
+type declaration: ['struct', 'NormalForm', '*']
 token function_anf
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'NormalForm']
 token struct
+type declaration: ['struct', 'NormalForm']
 token closebracket
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token function_expressions
 token equals
@@ -7998,8 +7990,8 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token closebracket
 token closebracket
 token semicolon
@@ -8050,8 +8042,8 @@ token function_expressions
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'y']
 token int
+type declaration: ['int', 'y']
 token 0
 token semicolon
 token y
@@ -8107,8 +8099,8 @@ token closecurly
 token closecurly
 token for
 token openbracket
-type declaration: ['int', 'y']
 token int
+type declaration: ['int', 'y']
 token 0
 token semicolon
 token y
@@ -8144,17 +8136,17 @@ token return
 token result
 token semicolon
 token closecurly
-type declaration: ['struct', 'Function']
 token struct
+type declaration: ['struct', 'Function', '*']
 token resolve_name
 token openbracket
-type declaration: ['struct', 'CodeGenContext']
 token struct
+type declaration: ['struct', 'CodeGenContext', '*']
 token context
 token comma
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'function_name']
-token char
 token opencurly
 token printf
 token openbracket
@@ -8172,8 +8164,8 @@ token closebracket
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token 0
 token semicolon
 token x
@@ -8246,8 +8238,8 @@ token closecurly
 token closecurly
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token 0
 token semicolon
 token x
@@ -8296,25 +8288,25 @@ token semicolon
 token closecurly
 token closecurly
 token closecurly
-Found function, return type: ['int', 'writecode']
 token int
-type declaration: ['struct', 'CodeGenContext']
+Found function, return type: ['int', 'writecode']
 token struct
+type declaration: ['struct', 'CodeGenContext', '*']
 token context
 token comma
-type declaration: ['struct', 'FunctionContext']
 token struct
+type declaration: ['struct', 'FunctionContext', '*']
 token function_context
 token comma
-type declaration: ['struct', 'NormalForm']
 token struct
+type declaration: ['struct', 'NormalForm', '*']
 token anf
 token closebracket
 token opencurly
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token 0
 token semicolon
 token x
@@ -8365,20 +8357,20 @@ token n
 token quote
 token closebracket
 token semicolon
-type declaration: ['int', 'call_bytes_length']
 token int
+type declaration: ['int', 'call_bytes_length']
 token 2
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'method_bytes']
-token char
 token malloc
 token openbracket
 token call_bytes_length
 token closebracket
 token semicolon
-type declaration: ['int', 'method_ins_count']
 token int
+type declaration: ['int', 'method_ins_count']
 token 0
 token semicolon
 token method_bytes
@@ -8399,24 +8391,24 @@ token closesquare
 token equals
 token 0xd0
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'method_address']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 4
 token closebracket
 token semicolon
-type declaration: ['int', 'method_address_count']
 token int
+type declaration: ['int', 'method_address_count']
 token 0
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token method_call_expression
 token equals
 token anf
@@ -8432,8 +8424,8 @@ token closesquare
 token stop
 token expression
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token method_call_name_identifier
 token equals
 token anf
@@ -8461,16 +8453,16 @@ token opensquare
 token 0
 token closesquare
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'method_name']
-token char
 token method_call_name_identifier
 token minus
 token greaterthan
 token stringvalue
 token semicolon
-type declaration: ['struct', 'Function']
 token struct
+type declaration: ['struct', 'Function', '*']
 token function
 token equals
 token resolve_name
@@ -8516,8 +8508,8 @@ token greaterthan
 token code
 token closebracket
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token arg1
 token equals
 token anf
@@ -8672,9 +8664,9 @@ token closesquare
 token equals
 token 0xbf
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'start']
-token char
 token function_context
 token minus
 token greaterthan
@@ -8685,15 +8677,15 @@ token minus
 token greaterthan
 token pc
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'address']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 8
 token closebracket
 token semicolon
@@ -8784,9 +8776,9 @@ token closesquare
 token equals
 token 0xb8
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'start2']
-token char
 token function_context
 token minus
 token greaterthan
@@ -8797,15 +8789,15 @@ token minus
 token greaterthan
 token pc
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'address2']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 8
 token closebracket
 token semicolon
@@ -8879,16 +8871,16 @@ token 0x48
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'n']
 token int
+type declaration: ['int', 'n']
 token 0
 token semicolon
 token n
 token lessthan
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 4
 token semicolon
 token n
@@ -8903,16 +8895,16 @@ token  method_address[method_address_count++] = function->code[n];
 token closecurly
 token for
 token openbracket
-type declaration: ['int', 'n']
 token int
+type declaration: ['int', 'n']
 token 0
 token semicolon
 token n
 token lessthan
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 4
 token semicolon
 token n
@@ -8935,8 +8927,8 @@ token semicolon
 token closecurly
 token for
 token openbracket
-type declaration: ['int', 'i']
 token int
+type declaration: ['int', 'i']
 token 0
 token semicolon
 token i
@@ -9001,9 +8993,9 @@ token closesquare
 token equals
 token 0xbf
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'start']
-token char
 token function_context
 token minus
 token greaterthan
@@ -9014,24 +9006,24 @@ token minus
 token greaterthan
 token pc
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'address']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 8
 token closebracket
 token semicolon
 token address
 token equals
 token openbracket
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'closebracket']
-token char
 token minus
 token greaterthan
 token id
@@ -9113,9 +9105,9 @@ token closesquare
 token equals
 token 0xbb
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'compile_stub_start']
-token char
 token function_context
 token minus
 token greaterthan
@@ -9126,24 +9118,24 @@ token minus
 token greaterthan
 token pc
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'compile_address']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 8
 token closebracket
 token semicolon
 token compile_address
 token equals
 token openbracket
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'closebracket']
-token char
 token semicolon
 token printf
 token openbracket
@@ -9177,16 +9169,16 @@ token comma
 token 8
 token closebracket
 token semicolon
-type declaration: ['struct', 'Callsite']
 token struct
+type declaration: ['struct', 'Callsite', '*']
 token callsite
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'Callsite']
 token struct
+type declaration: ['struct', 'Callsite']
 token closebracket
 token semicolon
 token callsite
@@ -9297,24 +9289,24 @@ token n
 token quote
 token closebracket
 token semicolon
-type declaration: ['int', 'add_size_of_immediate']
 token int
+type declaration: ['int', 'add_size_of_immediate']
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token sizeof
 token openbracket
+token int
 type declaration: ['int', 'closebracket']
 token int
 type declaration: ['int', 'add_bytes_length']
-token int
 token 3
 token asterisk
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket']
 token printf
 token openbracket
 token quote
@@ -9330,20 +9322,20 @@ token comma
 token add_bytes_length
 token closebracket
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'add_bytes']
-token char
 token malloc
 token openbracket
 token add_bytes_length
 token closebracket
 token semicolon
-type declaration: ['int', 'add_bytes_count']
 token int
+type declaration: ['int', 'add_bytes_count']
 token 0
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token left
 token equals
 token anf
@@ -9366,8 +9358,8 @@ token opensquare
 token 0
 token closesquare
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token right
 token equals
 token anf
@@ -9390,17 +9382,17 @@ token opensquare
 token 1
 token closesquare
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'register_left']
-token char
 token left
 token minus
 token greaterthan
 token chosen_register
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'register_right']
-token char
 token right
 token minus
 token greaterthan
@@ -9442,9 +9434,9 @@ token comma
 token register_right
 token closebracket
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'destination_register']
-token char
 token anf
 token minus
 token greaterthan
@@ -10112,8 +10104,8 @@ token semicolon
 token closecurly
 token for
 token openbracket
-type declaration: ['int', 'n']
 token int
+type declaration: ['int', 'n']
 token 0
 token semicolon
 token n
@@ -10193,36 +10185,36 @@ token equals
 token NUMBER
 token closebracket
 token opencurly
-type declaration: ['int', 'size_of_immediate']
 token int
+type declaration: ['int', 'size_of_immediate']
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 4
 token semicolon
-type declaration: ['int', 'bytes_count']
 token int
+type declaration: ['int', 'bytes_count']
 token openbracket
 token 3
 token asterisk
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket']
 token plus
 token size_of_immediate
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'bytes']
-token char
 token malloc
 token openbracket
 token bytes_count
 token closebracket
 token semicolon
-type declaration: ['int', 'byte_count']
 token int
+type declaration: ['int', 'byte_count']
 token 0
 token semicolon
 token bytes
@@ -10294,8 +10286,8 @@ token closebracket
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'y']
 token int
+type declaration: ['int', 'y']
 token 0
 token semicolon
 token y
@@ -10467,21 +10459,21 @@ token semicolon
 token break
 token semicolon
 token closecurly
+token int
 is a pointer ['int', '*']
 type declaration: ['int', '*', 'immediate']
-token int
 token malloc
 token openbracket
 token size_of_immediate
 token closebracket
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'immediate_bytes']
-token char
 token openbracket
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'closebracket']
-token char
 token immediate
 token semicolon
 token memcpy
@@ -10503,8 +10495,8 @@ token comma
 token size_of_immediate
 token closebracket
 token semicolon
-type declaration: ['int', 'ins_counter']
 token int
+type declaration: ['int', 'ins_counter']
 token 3
 token semicolon
 token bytes
@@ -10598,8 +10590,8 @@ token closebracket
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'n']
 token int
+type declaration: ['int', 'n']
 token 0
 token semicolon
 token n
@@ -10631,8 +10623,8 @@ token semicolon
 token closecurly
 token for
 token openbracket
-type declaration: ['int', 'n']
 token int
+type declaration: ['int', 'n']
 token 0
 token semicolon
 token n
@@ -10674,14 +10666,14 @@ token semicolon
 token closecurly
 token closecurly
 token closecurly
-Found function, return type: ['int', 'dump_machine_code']
 token int
+Found function, return type: ['int', 'dump_machine_code']
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'name']
 token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'code']
-token char
 token opencurly
 token printf
 token openbracket
@@ -10699,8 +10691,8 @@ token closebracket
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'n']
 token int
+type declaration: ['int', 'n']
 token 0
 token semicolon
 token n
@@ -10748,13 +10740,13 @@ token closebracket
 token semicolon
 token closecurly
 token closecurly
+token int
 Found function, return type: ['int', 'compile_stub']
 token int
 type declaration: ['int', 'function_id']
-token int
 token opencurly
-type declaration: ['struct', 'Function']
 token struct
+type declaration: ['struct', 'Function', '*']
 token function
 token equals
 token CODEGEN_CONTEXT
@@ -10843,15 +10835,15 @@ token n
 token quote
 token closebracket
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'address']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 8
 token closebracket
 token semicolon
@@ -10899,8 +10891,8 @@ token closebracket
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token 0
 token semicolon
 token x
@@ -10927,8 +10919,8 @@ token comma
 token x
 token closebracket
 token semicolon
-type declaration: ['struct', 'Callsite']
 token struct
+type declaration: ['struct', 'Callsite', '*']
 token callsite
 token equals
 token function
@@ -10939,9 +10931,9 @@ token opensquare
 token x
 token closesquare
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'start']
-token char
 token callsite
 token minus
 token greaterthan
@@ -11065,10 +11057,9 @@ token pc
 token closebracket
 token semicolon
 token closecurly
-type declaration: ['char', 'name']
 token char
-token 100
-token closesquare
+end of array
+type declaration: ['char', 'name', '100']
 token semicolon
 token sprintf
 token openbracket
@@ -11114,10 +11105,9 @@ token greaterthan
 token code
 token closebracket
 token semicolon
-type declaration: ['char', 'filename']
 token char
-token 100
-token closesquare
+end of array
+type declaration: ['char', 'filename', '100']
 token semicolon
 token sprintf
 token openbracket
@@ -11176,23 +11166,23 @@ token fp
 token closebracket
 token semicolon
 token closecurly
-Found function, return type: ['int', 'codegen']
 token int
-type declaration: ['struct', 'ANF']
+Found function, return type: ['int', 'codegen']
 token struct
+type declaration: ['struct', 'ANF', '*']
 token anfs
 token closebracket
 token opencurly
-type declaration: ['struct', 'CodeGenContext']
 token struct
+type declaration: ['struct', 'CodeGenContext', '*']
 token codegen_context
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'CodeGenContext']
 token struct
+type declaration: ['struct', 'CodeGenContext', '*']
 token closebracket
 token closebracket
 token semicolon
@@ -11224,8 +11214,8 @@ token CODEGEN_CONTEXT
 token equals
 token codegen_context
 token semicolon
-type declaration: ['struct', 'Function']
 token struct
+type declaration: ['struct', 'Function', '*']
 token asterisk
 token global_functions
 token equals
@@ -11233,25 +11223,25 @@ token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'Function']
 token struct
+type declaration: ['struct', 'Function', '*']
 token closebracket
 token closebracket
 token semicolon
-type declaration: ['int', 'global_function_length']
 token int
+type declaration: ['int', 'global_function_length']
 token 0
 token semicolon
-type declaration: ['struct', 'Function']
 token struct
+type declaration: ['struct', 'Function', '*']
 token printf_function
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'Function']
 token struct
+type declaration: ['struct', 'Function']
 token closebracket
 token semicolon
 token printf_function
@@ -11295,8 +11285,8 @@ token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 4
 token closebracket
 token semicolon
@@ -11306,9 +11296,9 @@ token greaterthan
 token code
 token equals
 token openbracket
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'closebracket']
-token char
 token semicolon
 token printf_function
 token minus
@@ -11346,8 +11336,8 @@ token function_length
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token 0
 token semicolon
 token x
@@ -11394,21 +11384,21 @@ token openbracket
 token closebracket
 token closebracket
 token semicolon
-type declaration: ['struct', 'FunctionContext']
 token struct
+type declaration: ['struct', 'FunctionContext', '*']
 token function_context
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'FunctionContext']
 token struct
+type declaration: ['struct', 'FunctionContext']
 token closebracket
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'write_region']
-token char
 token mmap
 token openbracket
 token NULL
@@ -11563,8 +11553,8 @@ token closebracket
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'n']
 token int
+type declaration: ['int', 'n']
 token 0
 token semicolon
 token n
@@ -11615,9 +11605,9 @@ token closebracket
 token semicolon
 token closecurly
 token closecurly
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'main_write_region']
-token char
 token mmap
 token openbracket
 token NULL
@@ -11670,16 +11660,16 @@ token quote
 token closebracket
 token semicolon
 token closecurly
-type declaration: ['struct', 'FunctionContext']
 token struct
+type declaration: ['struct', 'FunctionContext', '*']
 token main_function_context
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'FunctionContext']
 token struct
+type declaration: ['struct', 'FunctionContext']
 token closebracket
 token semicolon
 token codegen_context
@@ -11828,23 +11818,23 @@ token quote
 token closebracket
 token semicolon
 token closecurly
+token hash
 Found define BINOP = 0
 token hash
 Found define MULTIARY = 1
 token hash
 Found define UNARY = 2
-token hash
-type declaration: ['struct', 'AssignmentPair']
 token struct
+type declaration: ['struct', 'AssignmentPair', '*']
 token assignregisters
 token openbracket
-type declaration: ['struct', 'NormalForm']
 token struct
+type declaration: ['struct', 'NormalForm', '*']
 token anf
 token closebracket
 token opencurly
-type declaration: ['struct', 'Assignment']
 token struct
+type declaration: ['struct', 'Assignment', '*']
 token assignments
 token equals
 token calloc
@@ -11853,14 +11843,14 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Assignment']
 token struct
+type declaration: ['struct', 'Assignment']
 token closebracket
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token 0
 token semicolon
 token x
@@ -11882,18 +11872,18 @@ token equals
 token NULL
 token semicolon
 token closecurly
-type declaration: ['int', 'assignment_counter']
 token int
+type declaration: ['int', 'assignment_counter']
 token 0
 token semicolon
-type declaration: ['int', 'counter']
 token int
+type declaration: ['int', 'counter']
 token 0
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token 0
 token semicolon
 token x
@@ -11925,15 +11915,15 @@ token opencurly
 token case
 token METHOD_CALL
 token colon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'key']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 50
 token closebracket
 token semicolon
@@ -12027,15 +12017,15 @@ token variable
 token equals
 token key
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', '_method_variable_key']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 100
 token closebracket
 token semicolon
@@ -12141,10 +12131,9 @@ token closesquare
 token stop
 token variable_length
 token semicolon
-type declaration: ['char', 'method_call_text']
 token char
-token 300
-token closesquare
+end of array
+type declaration: ['char', 'method_call_text', '300']
 token semicolon
 token memset
 token openbracket
@@ -12158,25 +12147,25 @@ token comma
 token 300
 token closebracket
 token semicolon
+token int
 type declaration: ['int', 'position']
-token int
 token 0
 token semicolon
+token int
 type declaration: ['int', 'first']
-token int
 token 0
 token semicolon
+token int
 type declaration: ['int', 'reference_count']
-token int
 token 0
 token semicolon
+token int
 type declaration: ['int', 'reference_variable_length_count']
-token int
 token 0
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'asterisk']
-token char
 token equals
 token calloc
 token openbracket
@@ -12184,12 +12173,12 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket']
 token semicolon
+token int
 is a pointer ['int', '*']
 type declaration: ['int', '*', 'asterisk']
-token int
 token equals
 token calloc
 token openbracket
@@ -12197,12 +12186,12 @@ token 100
 token comma
 token sizeof
 token openbracket
+token int
 is a pointer ['int', '*']
 type declaration: ['int', '*', 'closebracket']
-token int
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token reference_expressions
 token equals
@@ -12212,13 +12201,13 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token closebracket
 token closebracket
 token semicolon
-type declaration: ['int', 'reference_expressions_count']
 token int
+type declaration: ['int', 'reference_expressions_count']
 token 0
 token semicolon
 token assignments
@@ -12232,8 +12221,8 @@ token references
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'y']
 token int
+type declaration: ['int', 'y']
 token 0
 token semicolon
 token y
@@ -12259,8 +12248,8 @@ token closebracket
 token opencurly
 token for
 token openbracket
-type declaration: ['int', 'e']
 token int
+type declaration: ['int', 'e']
 token 0
 token semicolon
 token e
@@ -12287,15 +12276,15 @@ token plus
 token plus
 token closebracket
 token opencurly
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'method_variable_key']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 100
 token closebracket
 token semicolon
@@ -12415,15 +12404,15 @@ token opensquare
 token e
 token closesquare
 token semicolon
+token int
 is a pointer ['int', '*']
 type declaration: ['int', '*', 'method_variable_key_length']
-token int
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['int', 'closebracket']
 token int
+type declaration: ['int', 'closebracket']
 token semicolon
 token asterisk
 token method_variable_key_length
@@ -12444,8 +12433,8 @@ token method_variable_key_length
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'c']
 token int
+type declaration: ['int', 'c']
 token 0
 token semicolon
 token c
@@ -12629,15 +12618,15 @@ found slash
 /
 token  printf("%s\n", method_call_text);
 
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'text']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 400
 token closebracket
 token semicolon
@@ -12794,15 +12783,15 @@ token minus
 token greaterthan
 token stringvalue
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', '_identifier_variable_key']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 100
 token closebracket
 token semicolon
@@ -12907,21 +12896,21 @@ token minus
 token greaterthan
 token stringvalue
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'text5']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 100
 token closebracket
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'asterisk']
-token char
 token equals
 token calloc
 token openbracket
@@ -12929,13 +12918,13 @@ token 100
 token comma
 token sizeof
 token openbracket
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'closebracket']
-token char
 token semicolon
+token int
 is a pointer ['int', '*']
 type declaration: ['int', '*', 'asterisk']
-token int
 token equals
 token calloc
 token openbracket
@@ -12943,12 +12932,12 @@ token 100
 token comma
 token sizeof
 token openbracket
+token int
 is a pointer ['int', '*']
 type declaration: ['int', '*', 'closebracket']
-token int
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token identifier_reference_expressions
 token equals
@@ -12958,21 +12947,21 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token closebracket
 token closebracket
 token semicolon
+token int
 type declaration: ['int', 'identifier_reference_count']
-token int
 token 0
 token semicolon
+token int
 type declaration: ['int', 'identifier_reference_variable_count']
-token int
 token 0
 token semicolon
-type declaration: ['int', 'identifier_reference_expression_count']
 token int
+type declaration: ['int', 'identifier_reference_expression_count']
 token 0
 token semicolon
 token assignments
@@ -13002,15 +12991,15 @@ token reference_expressions
 token equals
 token identifier_reference_expressions
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'identifier_variable_key']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 100
 token closebracket
 token semicolon
@@ -13049,15 +13038,15 @@ token greaterthan
 token variable
 token closebracket
 token semicolon
+token int
 is a pointer ['int', '*']
 type declaration: ['int', '*', 'identifier_variable_key_length']
-token int
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['int', 'closebracket']
 token int
+type declaration: ['int', 'closebracket']
 token semicolon
 token asterisk
 token identifier_variable_key_length
@@ -13177,15 +13166,15 @@ token semicolon
 token case
 token MEMBER_ACCESS
 token colon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'key2']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 50
 token closebracket
 token semicolon
@@ -13279,15 +13268,15 @@ token openbracket
 token key2
 token closebracket
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', '_member_variable_key']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 100
 token closebracket
 token semicolon
@@ -13375,15 +13364,15 @@ token closesquare
 token stop
 token variable_length
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'text4']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 100
 token closebracket
 token semicolon
@@ -13414,13 +13403,13 @@ token comma
 token 100
 token closebracket
 token semicolon
-type declaration: ['int', 'member_reference_count']
 token int
+type declaration: ['int', 'member_reference_count']
 token 0
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'asterisk']
-token char
 token equals
 token calloc
 token openbracket
@@ -13428,11 +13417,11 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket']
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token member_reference_expressions
 token equals
@@ -13442,14 +13431,14 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token closebracket
 token closebracket
 token semicolon
+token int
 is a pointer ['int', '*']
 type declaration: ['int', '*', 'asterisk']
-token int
 token equals
 token calloc
 token openbracket
@@ -13457,26 +13446,26 @@ token 100
 token comma
 token sizeof
 token openbracket
+token int
 type declaration: ['int', 'closebracket']
-token int
 token semicolon
+token int
 type declaration: ['int', 'member_reference_variable_length_count']
-token int
 token 0
 token semicolon
+token int
 type declaration: ['int', 'member_reference_expression_count']
-token int
 token 0
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'member_variable_key']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 100
 token closebracket
 token semicolon
@@ -13665,15 +13654,15 @@ token reference_expressions_length
 token equals
 token member_reference_expression_count
 token semicolon
+token int
 is a pointer ['int', '*']
 type declaration: ['int', '*', 'member_variable_key_length']
-token int
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['int', 'closebracket']
 token int
+type declaration: ['int', 'closebracket']
 token semicolon
 token asterisk
 token member_variable_key_length
@@ -13797,15 +13786,15 @@ token semicolon
 token case
 token ADD
 token colon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'key3']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 50
 token closebracket
 token semicolon
@@ -13899,15 +13888,15 @@ token openbracket
 token key3
 token closebracket
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', '_add_variable_key']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 100
 token closebracket
 token semicolon
@@ -14055,21 +14044,21 @@ token minus
 token greaterthan
 token variable
 token semicolon
+token int
 type declaration: ['int', 'add_reference_count']
-token int
 token 0
 token semicolon
+token int
 type declaration: ['int', 'add_reference_variable_length_count']
-token int
 token 0
 token semicolon
+token int
 type declaration: ['int', 'add_reference_expressions_count']
-token int
 token 0
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'asterisk']
-token char
 token equals
 token calloc
 token openbracket
@@ -14077,11 +14066,11 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket']
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token add_reference_expressions
 token equals
@@ -14091,14 +14080,14 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token closebracket
 token closebracket
 token semicolon
+token int
 is a pointer ['int', '*']
 type declaration: ['int', '*', 'asterisk']
-token int
 token equals
 token calloc
 token openbracket
@@ -14106,50 +14095,50 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['int', 'closebracket']
 token int
+type declaration: ['int', 'closebracket']
 token semicolon
+token int
 is a pointer ['int', '*']
 type declaration: ['int', '*', 'left_length']
-token int
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['int', 'closebracket']
 token int
+type declaration: ['int', 'closebracket']
 token semicolon
+token int
 is a pointer ['int', '*']
 type declaration: ['int', '*', 'right_length']
-token int
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['int', 'closebracket']
 token int
+type declaration: ['int', 'closebracket']
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'add_variable_key_left']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 100
 token closebracket
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'add_variable_key_right']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 100
 token closebracket
 token semicolon
@@ -14455,15 +14444,15 @@ token reference_variable_length
 token equals
 token add_reference_variable_length
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'text2']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 100
 token closebracket
 token semicolon
@@ -14547,15 +14536,15 @@ token semicolon
 token case
 token RETURN
 token colon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'key4']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 50
 token closebracket
 token semicolon
@@ -14649,15 +14638,15 @@ token openbracket
 token key3
 token closebracket
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', '_return_variable_key']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 100
 token closebracket
 token semicolon
@@ -14775,21 +14764,21 @@ token minus
 token greaterthan
 token variable
 token semicolon
+token int
 type declaration: ['int', 'return_reference_count']
-token int
 token 0
 token semicolon
+token int
 type declaration: ['int', 'return_reference_variable_length_count']
-token int
 token 0
 token semicolon
+token int
 type declaration: ['int', 'return_reference_expressions_count']
-token int
 token 0
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'asterisk']
-token char
 token equals
 token calloc
 token openbracket
@@ -14797,11 +14786,11 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket']
 token semicolon
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token asterisk
 token return_reference_expressions
 token equals
@@ -14811,14 +14800,14 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Expression']
 token struct
+type declaration: ['struct', 'Expression', '*']
 token closebracket
 token closebracket
 token semicolon
+token int
 is a pointer ['int', '*']
 type declaration: ['int', '*', 'asterisk']
-token int
 token equals
 token calloc
 token openbracket
@@ -14826,28 +14815,28 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['int', 'closebracket']
 token int
+type declaration: ['int', 'closebracket']
 token semicolon
+token int
 is a pointer ['int', '*']
 type declaration: ['int', '*', 'return_left_length']
-token int
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['int', 'closebracket']
 token int
+type declaration: ['int', 'closebracket']
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'return_variable_key_left']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 100
 token closebracket
 token semicolon
@@ -15020,15 +15009,15 @@ token reference_variable_length
 token equals
 token return_reference_variable_length
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'return_text']
-token char
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token 100
 token closebracket
 token semicolon
@@ -15104,8 +15093,8 @@ token closecurly
 token closecurly
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token 0
 token semicolon
 token x
@@ -15135,16 +15124,16 @@ token text
 token closebracket
 token semicolon
 token closecurly
-type declaration: ['struct', 'AssignmentPair']
 token struct
+type declaration: ['struct', 'AssignmentPair', '*']
 token assignment_pair
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'AssignmentPair']
 token struct
+type declaration: ['struct', 'AssignmentPair']
 token closebracket
 token semicolon
 token assignment_pair
@@ -15172,21 +15161,21 @@ token return
 token assignment_pair
 token semicolon
 token closecurly
-type declaration: ['struct', 'RangePair']
 token struct
+type declaration: ['struct', 'RangePair', '*']
 token liveranges
 token openbracket
-type declaration: ['struct', 'NormalForm']
 token struct
+type declaration: ['struct', 'NormalForm', '*']
 token anf
 token comma
-type declaration: ['struct', 'AssignmentPair']
 token struct
+type declaration: ['struct', 'AssignmentPair', '*']
 token assignment_pair
 token closebracket
 token opencurly
-type declaration: ['struct', 'hashmap']
 token struct
+type declaration: ['struct', 'hashmap', '*']
 token variables
 token equals
 token calloc
@@ -15195,13 +15184,13 @@ token 10
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'hashmap']
 token struct
+type declaration: ['struct', 'hashmap']
 token closebracket
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'asterisk']
-token char
 token equals
 token calloc
 token openbracket
@@ -15209,13 +15198,13 @@ token 100
 token comma
 token sizeof
 token openbracket
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'closebracket']
-token char
 token semicolon
+token int
 is a pointer ['int', '*']
 type declaration: ['int', '*', 'asterisk']
-token int
 token equals
 token calloc
 token openbracket
@@ -15223,18 +15212,18 @@ token 100
 token comma
 token sizeof
 token openbracket
+token int
 is a pointer ['int', '*']
 type declaration: ['int', '*', 'closebracket']
-token int
 token semicolon
-type declaration: ['int', 'variable_length']
 token int
+type declaration: ['int', 'variable_length']
 token 0
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'i']
 token int
+type declaration: ['int', 'i']
 token 0
 token semicolon
 token i
@@ -15258,8 +15247,8 @@ token semicolon
 token closecurly
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token 0
 token semicolon
 token x
@@ -15285,8 +15274,8 @@ found slash
 token divide
 token for
 token openbracket
-type declaration: ['int', 'r']
 token int
+type declaration: ['int', 'r']
 token 0
 token semicolon
 token r
@@ -15306,9 +15295,9 @@ token plus
 token plus
 token closebracket
 token opencurly
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'reference']
-token char
 token assignment_pair
 token minus
 token greaterthan
@@ -15348,8 +15337,8 @@ token comma
 token reference
 token closebracket
 token semicolon
-type declaration: ['struct', 'hashmap_value']
 token struct
+type declaration: ['struct', 'hashmap_value', '*']
 token lookup
 token equals
 token get_hashmap
@@ -15469,8 +15458,8 @@ token semicolon
 token closecurly
 token closecurly
 token closecurly
-type declaration: ['struct', 'Range']
 token struct
+type declaration: ['struct', 'Range', '*']
 token asterisk
 token ranges
 token equals
@@ -15480,19 +15469,19 @@ token 100
 token comma
 token sizeof
 token openbracket
-type declaration: ['struct', 'Range']
 token struct
+type declaration: ['struct', 'Range', '*']
 token closebracket
 token closebracket
 token semicolon
-type declaration: ['int', 'range_count']
 token int
+type declaration: ['int', 'range_count']
 token 0
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'v']
 token int
+type declaration: ['int', 'v']
 token 0
 token semicolon
 token v
@@ -15504,34 +15493,34 @@ token plus
 token plus
 token closebracket
 token opencurly
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'search_target']
-token char
 token variables_list
 token opensquare
 token v
 token closesquare
 token semicolon
-type declaration: ['int', 'start_position_a']
 token int
+type declaration: ['int', 'start_position_a']
 token minus
 token 1
 token semicolon
-type declaration: ['struct', 'Assignment']
 token struct
+type declaration: ['struct', 'Assignment', '*']
 token start_assignment
 token semicolon
-type declaration: ['struct', 'Assignment']
 token struct
+type declaration: ['struct', 'Assignment', '*']
 token end_assignment
 token semicolon
-type declaration: ['int', 'end_position_a']
 token int
+type declaration: ['int', 'end_position_a']
 token minus
 token 1
 token semicolon
-type declaration: ['int', 'variable_length']
 token int
+type declaration: ['int', 'variable_length']
 token asterisk
 token variables_list_length
 token opensquare
@@ -15540,8 +15529,8 @@ token closesquare
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token 0
 token semicolon
 token x
@@ -15598,8 +15587,8 @@ token closecurly
 token closecurly
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token 0
 token semicolon
 token x
@@ -15653,8 +15642,8 @@ token semicolon
 token closecurly
 token for
 token openbracket
-type declaration: ['int', 'y']
 token int
+type declaration: ['int', 'y']
 token 0
 token semicolon
 token y
@@ -15716,16 +15705,16 @@ token semicolon
 token closecurly
 token closecurly
 token closecurly
-type declaration: ['struct', 'Range']
 token struct
+type declaration: ['struct', 'Range', '*']
 token range
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'Range']
 token struct
+type declaration: ['struct', 'Range']
 token closebracket
 token semicolon
 token range
@@ -15803,16 +15792,16 @@ token end_position_a
 token closebracket
 token semicolon
 token closecurly
-type declaration: ['struct', 'RangePair']
 token struct
+type declaration: ['struct', 'RangePair', '*']
 token range_pair
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'RangePair']
 token struct
+type declaration: ['struct', 'RangePair']
 token closebracket
 token semicolon
 token range_pair
@@ -15833,30 +15822,30 @@ token return
 token range_pair
 token semicolon
 token closecurly
-Found function, return type: ['int', 'assignrealregisters']
 token int
-type declaration: ['struct', 'NormalForm']
+Found function, return type: ['int', 'assignrealregisters']
 token struct
+type declaration: ['struct', 'NormalForm', '*']
 token anf
 token comma
-type declaration: ['struct', 'RangePair']
 token struct
+type declaration: ['struct', 'RangePair', '*']
 token range_pair
 token comma
-type declaration: ['struct', 'AssignmentPair']
 token struct
+type declaration: ['struct', 'AssignmentPair', '*']
 token assignment_pair
 token comma
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'asterisk']
-token char
 token comma
-type declaration: ['int', 'register_count']
 token int
+type declaration: ['int', 'register_count']
 token opencurly
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'asterisk']
-token char
 token equals
 token calloc
 token openbracket
@@ -15864,14 +15853,14 @@ token 100
 token comma
 token sizeof
 token openbracket
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'closebracket']
-token char
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token 0
 token semicolon
 token x
@@ -15923,40 +15912,40 @@ token x
 token closesquare
 token semicolon
 token closecurly
-type declaration: ['int', 'assignment_stack_position']
 token int
+type declaration: ['int', 'assignment_stack_position']
 token register_count
 token minus
 token 1
 token semicolon
-type declaration: ['struct', 'hashmap']
 token struct
+type declaration: ['struct', 'hashmap', '*']
 token template_variables
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'hashmap']
 token struct
+type declaration: ['struct', 'hashmap']
 token closebracket
 token semicolon
-type declaration: ['struct', 'hashmap']
 token struct
+type declaration: ['struct', 'hashmap', '*']
 token registers
 token equals
 token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['struct', 'hashmap']
 token struct
+type declaration: ['struct', 'hashmap']
 token closebracket
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token 0
 token semicolon
 token x
@@ -16006,8 +15995,8 @@ token semicolon
 token closecurly
 token for
 token openbracket
-type declaration: ['int', 'instruction']
 token int
+type declaration: ['int', 'instruction']
 token 0
 token semicolon
 token instruction
@@ -16024,8 +16013,8 @@ token closebracket
 token opencurly
 token for
 token openbracket
-type declaration: ['int', 'r']
 token int
+type declaration: ['int', 'r']
 token 0
 token semicolon
 token r
@@ -16137,8 +16126,8 @@ token greaterthan
 token end_position
 token closebracket
 token semicolon
-type declaration: ['struct', 'hashmap_value']
 token struct
+type declaration: ['struct', 'hashmap_value', '*']
 token lookup
 token equals
 token get_hashmap
@@ -16202,9 +16191,9 @@ token n
 token quote
 token comma
 token openbracket
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'closebracket']
-token char
 token minus
 token greaterthan
 token ranges
@@ -16224,9 +16213,9 @@ token 1
 token closesquare
 token equals
 token openbracket
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'closebracket']
-token char
 token minus
 token greaterthan
 token ranges
@@ -16287,9 +16276,9 @@ token equals
 token NULL
 token closebracket
 token opencurly
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'chosen_register']
-token char
 token previousassignments
 token opensquare
 token assignment_stack_position
@@ -16415,19 +16404,19 @@ token closecurly
 token closecurly
 token closecurly
 token closecurly
-Found function, return type: ['int', 'assign_all_registers']
 token int
-type declaration: ['struct', 'NormalForm']
+Found function, return type: ['int', 'assign_all_registers']
 token struct
+type declaration: ['struct', 'NormalForm', '*']
 token anf
 token comma
-type declaration: ['struct', 'AssignmentPair']
 token struct
+type declaration: ['struct', 'AssignmentPair', '*']
 token assignment_pair
 token closebracket
 token opencurly
-type declaration: ['struct', 'RangePair']
 token struct
+type declaration: ['struct', 'RangePair', '*']
 token range_pair
 token equals
 token liveranges
@@ -16437,9 +16426,9 @@ token comma
 token assignment_pair
 token closebracket
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'asterisk']
-token char
 token equals
 token calloc
 token openbracket
@@ -16447,12 +16436,12 @@ token 100
 token comma
 token sizeof
 token openbracket
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'closebracket']
-token char
 token semicolon
-type declaration: ['int', 'register_count']
 token int
+type declaration: ['int', 'register_count']
 token 0
 token semicolon
 token real_registers
@@ -16535,15 +16524,15 @@ token register_count
 token closebracket
 token semicolon
 token closecurly
-Found function, return type: ['int', 'machine_code']
 token int
-type declaration: ['struct', 'ANF']
+Found function, return type: ['int', 'machine_code']
 token struct
+type declaration: ['struct', 'ANF', '*']
 token anfs
 token closebracket
 token opencurly
-type declaration: ['int', 'pc']
 token int
+type declaration: ['int', 'pc']
 token 0
 token semicolon
 token assign_all_registers
@@ -16564,8 +16553,8 @@ token closebracket
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token 0
 token semicolon
 token x
@@ -16626,17 +16615,17 @@ token anfs
 token closebracket
 token semicolon
 token closecurly
-Found function, return type: ['int', 'dump']
 token int
-type declaration: ['struct', 'ParseResult']
+Found function, return type: ['int', 'dump']
 token struct
+type declaration: ['struct', 'ParseResult', '*']
 token parse_result
 token closebracket
 token opencurly
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token 0
 token semicolon
 token x
@@ -16664,17 +16653,17 @@ token closebracket
 token semicolon
 token closecurly
 token closecurly
-Found function, return type: ['int', 'dump_anf']
 token int
-type declaration: ['struct', 'NormalForm']
+Found function, return type: ['int', 'dump_anf']
 token struct
+type declaration: ['struct', 'NormalForm', '*']
 token anf
 token closebracket
 token opencurly
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token 0
 token semicolon
 token x
@@ -16804,23 +16793,22 @@ token semicolon
 token closecurly
 token closecurly
 token closecurly
+token int
 Found function, return type: ['int', 'main']
 token int
 type declaration: ['int', 'argc']
-token int
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'argv']
-token char
-token closesquare
 token closebracket
 token opencurly
 found slash
 /
 token  fgets(buffer, sizeof(buffer), stdin);
 
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'buffer']
-token char
 token 0
 token semicolon
 token long
@@ -16878,8 +16866,8 @@ token malloc
 token openbracket
 token sizeof
 token openbracket
-type declaration: ['char', 'closebracket']
 token char
+type declaration: ['char', 'closebracket', '*']
 token length
 token plus
 token 1
@@ -16943,8 +16931,8 @@ found slash
 /
 token  start to process your data / extract strings here...
 
-type declaration: ['struct', 'ParseResult']
 token struct
+type declaration: ['struct', 'ParseResult', '*']
 token ast
 token equals
 token parse
@@ -16991,8 +16979,8 @@ token closebracket
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token 0
 token semicolon
 token x
@@ -17029,8 +17017,8 @@ token openbracket
 token ast
 token closebracket
 token semicolon
-type declaration: ['struct', 'ANF']
 token struct
+type declaration: ['struct', 'ANF', '*']
 token anfs
 token equals
 token normalform
@@ -17050,8 +17038,8 @@ token closebracket
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token 0
 token semicolon
 token x
@@ -17144,8 +17132,8 @@ token closebracket
 token semicolon
 token for
 token openbracket
-type declaration: ['int', 'x']
 token int
+type declaration: ['int', 'x']
 token 0
 token semicolon
 token x
@@ -17238,9 +17226,8 @@ token 1
 token closebracket
 token semicolon
 token closecurly
-type declaration: ['char', 'maps']
 token char
-token BUFSIZ
+type declaration: ['char', 'maps']
 token closesquare
 token equals
 token quote
@@ -17344,9 +17331,9 @@ token heap_start
 token equals
 token 0
 token semicolon
+token char
 is a pointer ['char', '*']
 type declaration: ['char', '*', 'line']
-token char
 token strtok
 token openbracket
 token maps
@@ -17467,17 +17454,17 @@ token openbracket
 token anfs
 token closebracket
 token semicolon
-type declaration: ['int', 'openbracket']
 token int
+type declaration: ['int', 'openbracket', '*']
 token jmp_func
 token closebracket
 token openbracket
-type declaration: ['void', 'closebracket']
 token void
+type declaration: ['void', 'closebracket']
 token openbracket
+token void
 is a pointer ['void', '*']
 type declaration: ['void', '*', 'closebracket']
-token void
 token minus
 token greaterthan
 token codegen_context
