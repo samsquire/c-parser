@@ -5,7 +5,7 @@ c parser for diagram making
 
 BSD Zero Clause License
 
-Copyright (C)2023 by Samuel Michael Squire sam@samsquire.com
+Copyright (C) 2023 by Samuel Michael Squire sam@samsquire.com
 
 Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted.
 
