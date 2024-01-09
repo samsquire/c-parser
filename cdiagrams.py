@@ -7,6 +7,15 @@ parser.add_argument("--file")
 args = parser.parse_args()
 print(args.file)
 
+class Ast:
+  def __init__(self, kind, arguments):
+    self.kind = kind
+    self.arguments = arguments
+    self.children = []
+
+  def __repr__(self):
+    return "{} {}".format(self.kind, self.arguments)
+
 class Comment:
   def __init__(self, comment):
     self.comment = comment
@@ -184,6 +193,7 @@ class Parser():
     print("unknown character: [{}]".format(self.last_char))
 
   def parse_function(self):
+    finding = True
     token = self.gettoken() 
     if token == "asterisk":  
       self.return_type.append("*")
@@ -201,16 +211,39 @@ class Parser():
     elif determiner == "openbracket":
       print("Found function, return type: {}".format(self.return_type))
     else:
-      if determiner == "opensquare":
-        size = self.gettoken()  
-        if size.isdigit():
-          self.return_type.append(size)
-          close = self.gettoken()
-          if close == "closesquare":
-            print("end of array")
-      if determiner == "asterisk":
-        self.return_type.append("*")
-      print("type declaration: {}".format(self.return_type))
+      while finding:
+        print("determiner", determiner)
+        if determiner == "stop":
+          print("end of line");
+          finding = False
+        elif determiner == "opensquare":
+          size = self.gettoken()  
+          if size.isdigit():
+            self.return_type.append(Ast("array", {"size": size}))
+            close = self.gettoken()
+            print("close", close)
+            if close == "closesquare":
+              print("end of array")
+              finding = False
+          else:
+            constant = size
+            self.return_type.append(Ast("array-constant", {"constant": constant}))
+            close = self.gettoken() 
+            if close == "closesquare":
+              print("end of array")
+              finding = False
+        elif determiner == "asterisk":
+          self.return_type.append(Ast("pointer", {}))
+          determiner = self.gettoken()
+        elif determiner == "semicolon":
+          print("end of declaration")
+          finding = False
+        else:
+          # name
+          self.return_type.append(Ast("name", {"name": determiner}))
+          finding = False
+        print("type declaration: {}".format(self.return_type))
+    return self.return_type
 
   def parse(self):
     ast = []
@@ -218,8 +251,10 @@ class Parser():
       token = self.gettoken()
       print("token", token)
       if token == "struct":
-        self.return_type = ["struct"]
+        self.return_type = [Ast("struct", {})]
         self.parse_function()
+        print(self.return_type)
+        
       if token in self.types:
         self.return_type = [token]
         self.parse_function()
@@ -234,7 +269,27 @@ class Parser():
           print("Found define {} = {}".format(definevar, value))
         if include == "include": 
           lessthan = self.gettoken()
+          print("include", lessthan)
+          newlocation = ""
+          importlocation = ""
+          if lessthan == "quote":
+            while not self.end and self.peek(1) != "\"":
+              newlocation = self.gettoken()
+              if newlocation == "divide":
+                importlocation += "/"
+              else:
+                importlocation += newlocation
+            print(importlocation)
+            stop = self.gettoken()
+            if stop == "stop":
+              extension = self.gettoken()
+              if extension == "h":
+                endofimport = self.gettoken()
+                if endofimport == "quote":
+                  print("Found import #include \"{}.h\"".format(importlocation))
+
           if lessthan == "lessthan":
+            newlocation = ""
             importlocation = self.gettoken()
             while not self.end and self.peek(1) != ">":
               newlocation = self.gettoken()
