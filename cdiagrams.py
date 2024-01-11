@@ -1,11 +1,12 @@
 from argparse import ArgumentParser
 import re
+from pprint import pprint
 
 parser = ArgumentParser()
 parser.add_argument("--file")
 
 args = parser.parse_args()
-print(args.file)
+# print(args.file)
 
 class Ast:
   def __init__(self, kind, arguments):
@@ -58,6 +59,14 @@ class Parser():
     self.last_token = token
     return token
 
+  def peektoken(self):
+    origpos = self.pos
+    origlast_char = self.last_char
+    token = self.gettoken()
+    self.pos = origpos
+    self.last_char = origlast_char
+    return token
+
   def gettoken_inner(self):
     self.type = "token" 
     while not self.end and (self.last_char == " " or self.last_char == "\n" or self.last_char == "\t"):
@@ -90,9 +99,9 @@ class Parser():
       self.last_char = self.getchar()
       return "asterisk"
     if self.last_char == "/": 
-      print("found slash")
+      # print("found slash")
       self.last_char = self.getchar()
-      print(self.last_char)
+      # print(self.last_char)
       if self.last_char == "*":
         # print("found asterisk")
         comment = ""
@@ -190,24 +199,45 @@ class Parser():
         
       return self.identifier
 
-    print("unknown character: [{}]".format(self.last_char))
+    # print("unknown character: [{}]".format(self.last_char))
+
+  def parse_struct(self):
+    pass  
 
   def parse_function(self):
     finding = True
     token = self.gettoken() 
     if token == "asterisk":  
-      self.return_type.append("*")
-      print("is a pointer {}".format(self.return_type)) 
-      token = self.gettoken() 
-    if token in self.types:
-      self.return_type.append(token)
+      self.return_type.append(Ast("pointer", {}))
+      # print("is a pointer {}".format(self.return_type)) 
       name = self.gettoken() 
+    elif token in self.types:
+      print("known type")
+      self.return_type.append(Ast("type", {"name": token}))
+      name = self.gettoken()
     else:
       name = token
-    self.return_type.append(name)
+    name_or_type = Ast("name", {"name": name})
+    self.return_type.append(name_or_type)
     determiner = self.gettoken()
-    if determiner == "opencurly" and self.return_type[0] == "struct":
-      print("Found struct definition") 
+    # print("determiner - {}".format(determiner))
+    if determiner == "opencurly" and self.return_type[0].kind == "struct":
+      print("Found struct definition")
+      struct = self.return_type[0] 
+      while not self.end and self.peek(1) != "}":
+        self.return_type = []
+        token = self.gettoken()
+        if token in self.types: 
+          self.return_type.append(Ast("type", {"name": token}))
+        elif token == "struct":
+          self.return_type.append(Ast("struct", {}))
+        self.parse_function()
+        struct.children.append(self.return_type)
+      pprint("end of struct")
+      pprint(struct.children)
+       
+
+
     elif determiner == "openbracket":
       print("Found function, return type: {}".format(self.return_type))
     else:
@@ -240,9 +270,16 @@ class Parser():
           finding = False
         else:
           # name
+          name_or_type.kind = "type"
           self.return_type.append(Ast("name", {"name": determiner}))
           finding = False
         print("type declaration: {}".format(self.return_type))
+
+    nexttoken = self.peektoken()
+    print("peeked token", nexttoken)
+    if nexttoken == "semicolon":
+      self.gettoken()
+      print("EXPECTED WAS ", nexttoken)
     return self.return_type
 
   def parse(self):
@@ -256,7 +293,7 @@ class Parser():
         print(self.return_type)
         
       if token in self.types:
-        self.return_type = [token]
+        self.return_type = [Ast("type", {"name": token})]
         self.parse_function()
               
       if self.type == "comment":
