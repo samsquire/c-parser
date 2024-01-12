@@ -15,7 +15,19 @@ class Ast:
     self.children = []
 
   def __repr__(self):
-    return "{} {}".format(self.kind, self.arguments)
+    strings = list(self.show_s())
+    return "\n".join(strings)
+
+  def show(self, depth=0):
+    strings = list(self.show_s())
+    print("\n".join(strings))
+  
+  def show_s(self, depth=0):
+    spaces = " " * depth
+    yield ("{}{} {}".format(spaces, self.kind, self.arguments))
+    for statement in self.children:
+      for child in statement:
+        yield from child.show_s(depth=depth + 1)
 
 class Comment:
   def __init__(self, comment):
@@ -32,6 +44,7 @@ class Parser():
     self.end = False
     self.identifier = ""
     self.return_type = []
+    self.stack = []
     self.types = {
       "int": {},
       "void": {},
@@ -224,7 +237,8 @@ class Parser():
     if determiner == "opencurly" and self.return_type[0].kind == "struct":
       print("Found struct definition")
       struct = self.return_type[0] 
-      while not self.end and self.peek(1) != "}":
+      token = self.peektoken()
+      while not self.end and token != "closecurly" and self.last_token != "closecurly":
         self.return_type = []
         token = self.gettoken()
         if token in self.types: 
@@ -233,13 +247,48 @@ class Parser():
           self.return_type.append(Ast("struct", {}))
         self.parse_function()
         struct.children.append(self.return_type)
+        if self.peektoken() == "semicolon":
+          self.gettoken()
       pprint("end of struct")
-      pprint(struct.children)
-       
-
-
+      struct.show()
+ #   elif determiner == "comma":
+ #     self.stack.append(self.return_type)
+ #     self.return_type = []
     elif determiner == "openbracket":
       print("Found function, return type: {}".format(self.return_type))
+
+      plist = Ast("param-list", {})
+       
+      token = self.peektoken()
+      while not self.end and token != "closebracket":
+        token = self.gettoken()
+        print("paramlist token", token)
+
+        if token == "closebracket":
+          break
+
+        self.stack.append(self.return_type)
+        if token == "comma":
+          continue
+
+        self.return_type = []
+        param = Ast("parameter", {})
+
+        if token == "struct":
+          self.return_type.append(Ast("struct", {}))  
+        elif token in self.types:
+          self.return_type.append(Ast("type", {"name": token}))
+        else:
+          self.return_type.append(Ast("type", {"name": token}))
+
+        self.parse_function() 
+        param.children.append(self.return_type)
+        plist.children.append([param])
+      print("param list") 
+      plist.show()
+      pprint(self.stack)
+
+
     else:
       while finding:
         print("determiner", determiner)
@@ -251,17 +300,27 @@ class Parser():
           if size.isdigit():
             self.return_type.append(Ast("array", {"size": size}))
             close = self.gettoken()
-            print("close", close)
+            print("closedigit", close)
             if close == "closesquare":
               print("end of array")
               finding = False
+            else: 
+              determiner = close
+          elif size == "closesquare":
+            print("end of array")
+            self.return_type.append(Ast("array-empty", {}))
+            finding = False
           else:
             constant = size
             self.return_type.append(Ast("array-constant", {"constant": constant}))
             close = self.gettoken() 
+            print("closeelse", close)
             if close == "closesquare":
               print("end of array")
               finding = False
+            else: 
+              determiner = close
+
         elif determiner == "asterisk":
           self.return_type.append(Ast("pointer", {}))
           determiner = self.gettoken()
