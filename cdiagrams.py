@@ -41,14 +41,26 @@ class Parser():
     self.program = program
     self.last_char = self.getchar()
     self.regex = re.compile("[a-zA-Z0-9_]")
+    self.type = None
+    self.origtype = None
+    self.origpos = None
     self.end = False
     self.identifier = ""
     self.return_type = []
     self.stack = []
+    self.exprstack = []
     self.types = {
       "int": {},
       "void": {},
       "char": {}
+    }
+    self.raises = {
+      "equals": True
+    }
+    self.precedence = {
+      "plus": 1, 
+      "minus": 1, 
+      "asterisk": 1 
     }
 
   def getchar(self):
@@ -67,7 +79,15 @@ class Parser():
     peeked = self.program[self.pos + amount]
     return peeked
 
+  def rewind(self):
+    self.pos = self.origpos
+    self.type = self.origtype
+    self.last_char = self.origlast_char
+
   def gettoken(self):
+    self.origtype = self.type
+    self.origpos = self.pos
+    self.origlast_char = self.last_char
     token = self.gettoken_inner() 
     self.last_token = token
     return token
@@ -217,12 +237,101 @@ class Parser():
   def parse_struct(self):
     pass  
 
+  def parse_token(self, token, location):
+    print("parsetoken", location, token)
+    if token == "equals":
+      eqls = Ast("equals", {})
+      return eqls
+    elif token == "percent":
+      return Ast("modulo", {})
+    elif token == "if": 
+      ifs = Ast("if-statement", {})
+      bracket = self.gettoken()  
+      token = self.peektoken()  
+      while not self.end and token != "closebracket":
+        token = self.gettoken()
+        ifs.append(Ast(token, {}))
+      return ifs 
+    elif self.type == "identifier":
+        return Ast("identitier", {"name": token })
+    elif token == "openbracket": 
+      self.return_type = []
+      func = self.parse_param_list()
+      print("parsetoken, function, ", self.return_type)
+      p = Ast("params", {})
+      p.children.append(self.return_type)
+      return p
+      
+
+  def parse_expr(self):
+    token = self.gettoken()
+    leftmost = self.parse_token(token, "begin")
+    print("leftmost is", leftmost)
+    if token in self.precedence:
+      while self.precedence[token] > 0:
+        print("Consuming expression")
+        current_token = self.gettoken()
+        candidate = self.parse_token(current_token, "inner")
+        candidate.children.append(leftmost)
+        if current_token in self.raises:
+          leftmost = candidate
+        else:
+          leftmost.children.append(candidate)
+
+    return leftmost
+
+  def parse_param_list(self):
+    self.stack.append(self.return_type)
+    plist = Ast("param-list", {})
+    func = Ast("function", {}) 
+    func.children.append(self.return_type)
+    func.children.append([plist])
+    token = self.peektoken()
+    while not self.end and token != "closebracket":
+      token = self.gettoken()
+      print("paramlist token", token)
+
+      if token == "closebracket":
+        break
+
+      if token == "comma":
+        continue
+
+      self.return_type = []
+      param = Ast("parameter", {})
+
+      if token == "struct":
+        self.return_type.append(Ast("struct", {}))  
+      elif token in self.types:
+        self.return_type.append(Ast("type", {"name": token}))
+      else:
+        self.return_type.append(Ast("type", {"name": token}))
+
+      if self.peektoken() == "closebracket":
+        break
+      self.parse_function() 
+      param.children.append(self.return_type)
+      plist.children.append([param])
+    print("param list") 
+    func.show()
+    pprint(self.stack)
+    return func
+
+  def parse_body(self):
+    token = self.peektoken()
+    self.gettoken()
+    left_expr = []
+    while not self.end and token != "closecurly" and token != "closebracket": 
+      expr = self.parse_expr()
+      print("expression body")
+      expr.show()
+
   def parse_function(self):
     finding = True
     token = self.gettoken() 
     if token == "asterisk":  
       self.return_type.append(Ast("pointer", {}))
-      # print("is a pointer {}".format(self.return_type)) 
+      #print("is a pointer {}".format(self.return_type)) 
       name = self.gettoken() 
     elif token in self.types:
       print("known type")
@@ -233,7 +342,8 @@ class Parser():
     name_or_type = Ast("name", {"name": name})
     self.return_type.append(name_or_type)
     determiner = self.gettoken()
-    # print("determiner - {}".format(determiner))
+   
+    print("determiner - {}".format(determiner))
     if determiner == "opencurly" and self.return_type[0].kind == "struct":
       print("Found struct definition")
       struct = self.return_type[0] 
@@ -256,37 +366,7 @@ class Parser():
  #     self.return_type = []
     elif determiner == "openbracket":
       print("Found function, return type: {}".format(self.return_type))
-
-      plist = Ast("param-list", {})
-       
-      token = self.peektoken()
-      while not self.end and token != "closebracket":
-        token = self.gettoken()
-        print("paramlist token", token)
-
-        if token == "closebracket":
-          break
-
-        self.stack.append(self.return_type)
-        if token == "comma":
-          continue
-
-        self.return_type = []
-        param = Ast("parameter", {})
-
-        if token == "struct":
-          self.return_type.append(Ast("struct", {}))  
-        elif token in self.types:
-          self.return_type.append(Ast("type", {"name": token}))
-        else:
-          self.return_type.append(Ast("type", {"name": token}))
-
-        self.parse_function() 
-        param.children.append(self.return_type)
-        plist.children.append([param])
-      print("param list") 
-      plist.show()
-      pprint(self.stack)
+      self.parse_param_list()
 
 
     else:
@@ -327,6 +407,15 @@ class Parser():
         elif determiner == "semicolon":
           print("end of declaration")
           finding = False
+        elif determiner == "comma":
+          finding = False
+          self.rewind()
+          return self.return_type
+        elif determiner == "closebracket":
+          finding = False
+          print("CLOSEBRACKET")
+          self.rewind()
+          return self.return_type
         else:
           # name
           name_or_type.kind = "type"
@@ -339,6 +428,9 @@ class Parser():
     if nexttoken == "semicolon":
       self.gettoken()
       print("EXPECTED WAS ", nexttoken)
+    if nexttoken == "opencurly":
+      print("need to parse function body")
+      self.parse_body()
     return self.return_type
 
   def parse(self):
