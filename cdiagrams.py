@@ -55,7 +55,8 @@ class Parser():
       "char": {}
     }
     self.raises = {
-      "equals": True
+      "equals": True,
+      "openbracket": True
     }
     self.precedence = {
       "plus": 1, 
@@ -239,7 +240,10 @@ class Parser():
 
   def parse_token(self, token, location):
     print("parsetoken", location, token)
-    if token == "equals":
+    if token == "asterisk": 
+      ast = Ast("asterisk", {})
+      return ast
+    elif token == "equals":
       eqls = Ast("equals", {})
       return eqls
     elif token == "percent":
@@ -250,41 +254,56 @@ class Parser():
       token = self.peektoken()  
       while not self.end and token != "closebracket":
         token = self.gettoken()
-        ifs.append(Ast(token, {}))
+        ifs.children.append([Ast(token, {})])
       return ifs 
     elif self.type == "identifier":
         return Ast("identitier", {"name": token })
     elif token == "openbracket": 
-      self.return_type = []
+      print("openbracket in parsetoken")
+      # self.return_type = []
       func = self.parse_param_list()
       print("parsetoken, function, ", self.return_type)
-      p = Ast("params", {})
-      p.children.append(self.return_type)
-      return p
+      return func
+    elif token == "semicolon":
+      return "STOP"
       
 
   def parse_expr(self):
     token = self.gettoken()
     leftmost = self.parse_token(token, "begin")
+    if leftmost == "STOP": 
+      return "STOP"
     print("leftmost is", leftmost)
     if token in self.precedence:
       while self.precedence[token] > 0:
-        print("Consuming expression")
         current_token = self.gettoken()
+        print("Consuming expression, ", current_token)
         candidate = self.parse_token(current_token, "inner")
-        candidate.children.append(leftmost)
+        print("candidate", candidate)
+        if candidate == "STOP":
+          break
+        self.return_type.append(candidate)
+        print(self.return_type)
         if current_token in self.raises:
+          print("subsumption ", current_token)
+          candidate.children.append([leftmost])
           leftmost = candidate
+          self.return_type = []
         else:
-          leftmost.children.append(candidate)
+          print(current_token, "not a subsumption expression")
+          leftmost.children.append([candidate])
 
     return leftmost
 
   def parse_param_list(self):
+    print("PARAM LIST CALL")
+    print(self.return_type)
     self.stack.append(self.return_type)
     plist = Ast("param-list", {})
     func = Ast("function", {}) 
-    func.children.append(self.return_type)
+    if len(self.return_type) > 0:
+      func.children.append([self.return_type[-1]])
+    self.return_type = []
     func.children.append([plist])
     token = self.peektoken()
     while not self.end and token != "closebracket":
@@ -296,25 +315,54 @@ class Parser():
 
       if token == "comma":
         continue
+      elif token == "openbracket": 
+        print("Nested param list first")
+        param = Ast("parameter", {})
+        # self.return_type = []
+        inner = self.parse_param_list()
+        print("inner received", inner)
+        param.children.append([inner])
+        plist.children.append([param])
+        continue
 
-      self.return_type = []
+      # self.return_type = []
       param = Ast("parameter", {})
-
+      print("token is ", token)
       if token == "struct":
         self.return_type.append(Ast("struct", {}))  
       elif token in self.types:
         self.return_type.append(Ast("type", {"name": token}))
       else:
-        self.return_type.append(Ast("type", {"name": token}))
+        self.return_type.append(Ast("identifier", {"name": token}))
 
-      if self.peektoken() == "closebracket":
+
+      peek = self.peektoken() 
+      print("INNER PARAM LIST TOKEN", peek)
+      if peek == "closebracket":
         break
-      self.parse_function() 
-      param.children.append(self.return_type)
-      plist.children.append([param])
+      elif peek == "openbracket": 
+        print("Nested param list")
+        self.gettoken()
+        inner = self.parse_param_list()
+        param.children.append([inner])
+        plist.children.append([param])
+      elif peek == "comma":
+        inner = Ast("identifier", {"name": token})
+        param.children.append([inner])
+        plist.children.append([param])
+        # self.return_type.append(inner)
+        param = Ast("parameter", {})
+      else:
+        print("Parsing raw expression body")
+        res = self.parse_function() 
+        if res == "STOP":
+          continue
+        param.children.append(self.return_type)
+        self.return_type = []
+        plist.children.append([param])
     print("param list") 
     func.show()
-    pprint(self.stack)
+    # pprint(self.stack)
     return func
 
   def parse_body(self):
@@ -323,8 +371,11 @@ class Parser():
     left_expr = []
     while not self.end and token != "closecurly" and token != "closebracket": 
       expr = self.parse_expr()
+      if expr == "STOP": 
+        continue
       print("expression body")
       expr.show()
+      token = self.peektoken()
 
   def parse_function(self):
     finding = True
@@ -337,9 +388,12 @@ class Parser():
       print("known type")
       self.return_type.append(Ast("type", {"name": token}))
       name = self.gettoken()
+    elif token == "comma":
+      return "STOP"
     else:
       name = token
     name_or_type = Ast("name", {"name": name})
+    print("add name_or_type", name_or_type)
     self.return_type.append(name_or_type)
     determiner = self.gettoken()
    
@@ -355,7 +409,9 @@ class Parser():
           self.return_type.append(Ast("type", {"name": token}))
         elif token == "struct":
           self.return_type.append(Ast("struct", {}))
-        self.parse_function()
+        res = self.parse_function()
+        if res == "STOP":
+          break
         struct.children.append(self.return_type)
         if self.peektoken() == "semicolon":
           self.gettoken()
@@ -440,7 +496,9 @@ class Parser():
       print("token", token)
       if token == "struct":
         self.return_type = [Ast("struct", {})]
-        self.parse_function()
+        res = self.parse_function()
+        if res == "STOP":
+          break
         print(self.return_type)
         
       if token in self.types:

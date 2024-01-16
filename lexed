@@ -105,13 +105,19 @@ token openbracket
 token closebracket
 token semicolon
 token struct
+add name_or_type name {'name': 'hashmap_key'}
+determiner - opencurly
 Found struct definition
+add name_or_type name {'name': 'key'}
+determiner - opensquare
 determiner opensquare
 closedigit closesquare
 end of array
 type declaration: [type {'name': 'char'}, name {'name': 'key'}, array {'size': '1024'}]
 peeked token semicolon
 EXPECTED WAS  semicolon
+add name_or_type name {'name': 'len'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'int'}, name {'name': 'len'}]
@@ -128,15 +134,23 @@ peeked token closecurly
 token closecurly
 token semicolon
 token struct
+add name_or_type name {'name': 'hashmap_value'}
+determiner - opencurly
 Found struct definition
+add name_or_type name {'name': 'value'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [name {'name': 'value'}]
 peeked token int
+add name_or_type name {'name': 'nested'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'int'}, name {'name': 'nested'}]
 peeked token int
+add name_or_type name {'name': 'set'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'int'}, name {'name': 'set'}]
@@ -153,7 +167,11 @@ peeked token closecurly
 token closecurly
 token semicolon
 token struct
+add name_or_type name {'name': 'RangePair'}
+determiner - opencurly
 Found struct definition
+add name_or_type name {'name': 'Range'}
+determiner - asterisk
 determiner asterisk
 type declaration: [struct {}, name {'name': 'Range'}, pointer {}]
 determiner asterisk
@@ -162,6 +180,8 @@ determiner ranges
 type declaration: [struct {}, type {'name': 'Range'}, pointer {}, pointer {}, name {'name': 'ranges'}]
 peeked token semicolon
 EXPECTED WAS  semicolon
+add name_or_type name {'name': 'range_length'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'int'}, name {'name': 'range_length'}]
@@ -180,71 +200,105 @@ peeked token closecurly
 token closecurly
 token semicolon
 token struct
+add name_or_type name {'name': 'Assignment'}
+determiner - opencurly
 Found struct definition
+add name_or_type name {'name': 'Expression'}
+determiner - asterisk
 determiner asterisk
 type declaration: [struct {}, name {'name': 'Expression'}, pointer {}]
 determiner expression
 type declaration: [struct {}, type {'name': 'Expression'}, pointer {}, name {'name': 'expression'}]
 peeked token semicolon
 EXPECTED WAS  semicolon
+add name_or_type name {'name': 'ExpressionSource'}
+determiner - asterisk
 determiner asterisk
 type declaration: [struct {}, name {'name': 'ExpressionSource'}, pointer {}]
 determiner exps
 type declaration: [struct {}, type {'name': 'ExpressionSource'}, pointer {}, name {'name': 'exps'}]
 peeked token semicolon
 EXPECTED WAS  semicolon
+add name_or_type name {'name': 'variable'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'char'}, pointer {}, name {'name': 'variable'}]
 peeked token char
+add name_or_type name {'name': 'variable_key'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'char'}, pointer {}, name {'name': 'variable_key'}]
 peeked token int
+add name_or_type name {'name': 'variable_length'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'int'}, name {'name': 'variable_length'}]
 peeked token int
+add name_or_type name {'name': 'variable_key_length'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'int'}, name {'name': 'variable_key_length'}]
 peeked token int
+add name_or_type name {'name': 'type'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'int'}, name {'name': 'type'}]
 peeked token char
+add name_or_type name {'name': 'symbol'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'char'}, pointer {}, name {'name': 'symbol'}]
 peeked token char
+add name_or_type name {'name': 'left'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'char'}, pointer {}, name {'name': 'left'}]
 peeked token char
+add name_or_type name {'name': 'right'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'char'}, pointer {}, name {'name': 'right'}]
 peeked token char
+add name_or_type name {'name': 'text'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'char'}, pointer {}, name {'name': 'text'}]
 peeked token char
+add name_or_type name {'name': 'asterisk'}
+determiner - references
 determiner references
 type declaration: [type {'name': 'char'}, pointer {}, type {'name': 'asterisk'}, name {'name': 'references'}]
 peeked token semicolon
 EXPECTED WAS  semicolon
+add name_or_type name {'name': 'reference_length'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'int'}, name {'name': 'reference_length'}]
 peeked token int
+add name_or_type name {'name': 'asterisk'}
+determiner - reference_variable_length
 determiner reference_variable_length
 type declaration: [type {'name': 'int'}, pointer {}, type {'name': 'asterisk'}, name {'name': 'reference_variable_length'}]
 peeked token semicolon
 EXPECTED WAS  semicolon
+add name_or_type name {'name': 'chosen_register'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'char'}, pointer {}, name {'name': 'chosen_register'}]
 peeked token struct
+add name_or_type name {'name': 'Expression'}
+determiner - asterisk
 determiner asterisk
 type declaration: [struct {}, name {'name': 'Expression'}, pointer {}]
 determiner asterisk
@@ -253,6 +307,8 @@ determiner reference_expressions
 type declaration: [struct {}, type {'name': 'Expression'}, pointer {}, pointer {}, name {'name': 'reference_expressions'}]
 peeked token semicolon
 EXPECTED WAS  semicolon
+add name_or_type name {'name': 'reference_expressions_length'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'int'}, name {'name': 'reference_expressions_length'}]
@@ -316,7 +372,11 @@ peeked token closecurly
 token closecurly
 token semicolon
 token struct
+add name_or_type name {'name': 'Edges'}
+determiner - opencurly
 Found struct definition
+add name_or_type name {'name': 'Edge'}
+determiner - asterisk
 determiner asterisk
 type declaration: [struct {}, name {'name': 'Edge'}, pointer {}]
 determiner asterisk
@@ -325,10 +385,14 @@ determiner edges
 type declaration: [struct {}, type {'name': 'Edge'}, pointer {}, pointer {}, name {'name': 'edges'}]
 peeked token semicolon
 EXPECTED WAS  semicolon
+add name_or_type name {'name': 'edge_count'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'int'}, name {'name': 'edge_count'}]
 peeked token struct
+add name_or_type name {'name': 'Assignment'}
+determiner - asterisk
 determiner asterisk
 type declaration: [struct {}, name {'name': 'Assignment'}, pointer {}]
 determiner from
@@ -353,13 +417,19 @@ peeked token closecurly
 token closecurly
 token semicolon
 token struct
+add name_or_type name {'name': 'Edge'}
+determiner - opencurly
 Found struct definition
+add name_or_type name {'name': 'Assignment'}
+determiner - asterisk
 determiner asterisk
 type declaration: [struct {}, name {'name': 'Assignment'}, pointer {}]
 determiner assignment
 type declaration: [struct {}, type {'name': 'Assignment'}, pointer {}, name {'name': 'assignment'}]
 peeked token semicolon
 EXPECTED WAS  semicolon
+add name_or_type name {'name': 'destination'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'char'}, pointer {}, name {'name': 'destination'}]
@@ -378,41 +448,59 @@ peeked token closecurly
 token closecurly
 token semicolon
 token struct
+add name_or_type name {'name': 'Range'}
+determiner - opencurly
 Found struct definition
+add name_or_type name {'name': 'Expression'}
+determiner - asterisk
 determiner asterisk
 type declaration: [struct {}, name {'name': 'Expression'}, pointer {}]
 determiner expression
 type declaration: [struct {}, type {'name': 'Expression'}, pointer {}, name {'name': 'expression'}]
 peeked token semicolon
 EXPECTED WAS  semicolon
+add name_or_type name {'name': 'Assignment'}
+determiner - asterisk
 determiner asterisk
 type declaration: [struct {}, name {'name': 'Assignment'}, pointer {}]
 determiner start_assignment
 type declaration: [struct {}, type {'name': 'Assignment'}, pointer {}, name {'name': 'start_assignment'}]
 peeked token semicolon
 EXPECTED WAS  semicolon
+add name_or_type name {'name': 'Assignment'}
+determiner - asterisk
 determiner asterisk
 type declaration: [struct {}, name {'name': 'Assignment'}, pointer {}]
 determiner end_assignment
 type declaration: [struct {}, type {'name': 'Assignment'}, pointer {}, name {'name': 'end_assignment'}]
 peeked token semicolon
 EXPECTED WAS  semicolon
+add name_or_type name {'name': 'start_position'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'int'}, name {'name': 'start_position'}]
 peeked token int
+add name_or_type name {'name': 'end_position'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'int'}, name {'name': 'end_position'}]
 peeked token char
+add name_or_type name {'name': 'variable'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'char'}, pointer {}, name {'name': 'variable'}]
 peeked token int
+add name_or_type name {'name': 'variable_length'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'int'}, name {'name': 'variable_length'}]
 peeked token char
+add name_or_type name {'name': 'chosen_register'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'char'}, pointer {}, name {'name': 'chosen_register'}]
@@ -448,13 +536,19 @@ peeked token closecurly
 token closecurly
 token semicolon
 token struct
+add name_or_type name {'name': 'AssignmentPair'}
+determiner - opencurly
 Found struct definition
+add name_or_type name {'name': 'Assignment'}
+determiner - asterisk
 determiner asterisk
 type declaration: [struct {}, name {'name': 'Assignment'}, pointer {}]
 determiner assignments
 type declaration: [struct {}, type {'name': 'Assignment'}, pointer {}, name {'name': 'assignments'}]
 peeked token semicolon
 EXPECTED WAS  semicolon
+add name_or_type name {'name': 'assignment_length'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'int'}, name {'name': 'assignment_length'}]
@@ -472,21 +566,33 @@ peeked token closecurly
 token closecurly
 token semicolon
 token struct
+add name_or_type name {'name': 'hashmap'}
+determiner - opencurly
 Found struct definition
+add name_or_type name {'name': 'id'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'int'}, name {'name': 'id'}]
 peeked token struct
+add name_or_type name {'name': 'hashmap_key'}
+determiner - key
 determiner key
 type declaration: [struct {}, type {'name': 'hashmap_key'}, name {'name': 'key'}]
 peeked token opensquare
+add name_or_type name {'name': 'MAX_SIZE'}
+determiner - closesquare
 determiner closesquare
 type declaration: [type {'name': 'MAX_SIZE'}, name {'name': 'closesquare'}]
 peeked token semicolon
 EXPECTED WAS  semicolon
+add name_or_type name {'name': 'hashmap_value'}
+determiner - value
 determiner value
 type declaration: [struct {}, type {'name': 'hashmap_value'}, name {'name': 'value'}]
 peeked token opensquare
+add name_or_type name {'name': 'MAX_SIZE'}
+determiner - closesquare
 determiner closesquare
 type declaration: [type {'name': 'MAX_SIZE'}, name {'name': 'closesquare'}]
 peeked token semicolon
@@ -510,17 +616,25 @@ peeked token closecurly
 token closecurly
 token semicolon
 token struct
+add name_or_type name {'name': 'work_def'}
+determiner - opencurly
 Found struct definition
+add name_or_type name {'name': 'hashmap'}
+determiner - asterisk
 determiner asterisk
 type declaration: [struct {}, name {'name': 'hashmap'}, pointer {}]
 determiner hashmap
 type declaration: [struct {}, type {'name': 'hashmap'}, pointer {}, name {'name': 'hashmap'}]
 peeked token semicolon
 EXPECTED WAS  semicolon
+add name_or_type name {'name': 'running'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'int'}, name {'name': 'running'}]
 peeked token int
+add name_or_type name {'name': 'count'}
+determiner - semicolon
 determiner semicolon
 end of declaration
 type declaration: [type {'name': 'int'}, name {'name': 'count'}]
@@ -540,8 +654,17 @@ peeked token closecurly
 token closecurly
 token semicolon
 token int
+add name_or_type name {'name': 'set_hashmap'}
+determiner - openbracket
 Found function, return type: [type {'name': 'int'}, name {'name': 'set_hashmap'}]
+PARAM LIST CALL
+[type {'name': 'int'}, name {'name': 'set_hashmap'}]
 paramlist token struct
+token is  struct
+INNER PARAM LIST TOKEN hashmap
+Parsing raw expression body
+add name_or_type name {'name': 'hashmap'}
+determiner - asterisk
 determiner asterisk
 type declaration: [struct {}, name {'name': 'hashmap'}, pointer {}]
 determiner hashmap
@@ -549,20 +672,35 @@ type declaration: [struct {}, type {'name': 'hashmap'}, pointer {}, name {'name'
 peeked token comma
 paramlist token comma
 paramlist token char
+token is  char
+INNER PARAM LIST TOKEN key
+Parsing raw expression body
+add name_or_type name {'name': 'key'}
+determiner - opensquare
 determiner opensquare
 end of array
 type declaration: [type {'name': 'char'}, name {'name': 'key'}, array-empty {}]
 peeked token comma
 paramlist token comma
 paramlist token uintptr_t
+token is  uintptr_t
+INNER PARAM LIST TOKEN value
+Parsing raw expression body
+add name_or_type name {'name': 'value'}
+determiner - comma
 determiner comma
 paramlist token comma
 paramlist token int
+token is  int
+INNER PARAM LIST TOKEN key_length
+Parsing raw expression body
+add name_or_type name {'name': 'key_length'}
+determiner - closebracket
 determiner closebracket
+CLOSEBRACKET
 paramlist token closebracket
 param list
 function {}
- type {'name': 'int'}
  name {'name': 'set_hashmap'}
  param-list {}
   parameter {}
@@ -575,13 +713,898 @@ function {}
    name {'name': 'key'}
    array-empty {}
   parameter {}
-   type {'name': 'uintptr_t'}
+   identifier {'name': 'uintptr_t'}
    name {'name': 'value'}
   parameter {}
    type {'name': 'int'}
    name {'name': 'key_length'}
-[[type {'name': 'int'}, name {'name': 'set_hashmap'}]]
 peeked token opencurly
 need to parse function body
-opencurly
+parsetoken begin unsigned
+leftmost is identitier {'name': 'unsigned'}
+expression body
+identitier {'name': 'unsigned'}
+parsetoken begin long
+leftmost is identitier {'name': 'long'}
+expression body
+identitier {'name': 'long'}
+parsetoken begin hsh
+leftmost is identitier {'name': 'hsh'}
+expression body
+identitier {'name': 'hsh'}
+parsetoken begin equals
+leftmost is equals {}
+expression body
+equals {}
+parsetoken begin hash
+leftmost is identitier {'name': 'hash'}
+expression body
+identitier {'name': 'hash'}
+parsetoken begin openbracket
+openbracket in parsetoken
+PARAM LIST CALL
+[]
+paramlist token key
+token is  key
+INNER PARAM LIST TOKEN closebracket
+param list
+function {}
+ param-list {}
+parsetoken, function,  [identifier {'name': 'key'}]
+leftmost is function {}
+ param-list {}
+expression body
+function {}
+ param-list {}
+token closebracket
+token percent
+token MAX_SIZE
+token semicolon
+token memcpy
+token openbracket
+token amper
+token openbracket
+token asterisk
+token hashmap
+token closebracket
+token stop
+token key
+token opensquare
+token hsh
+token closesquare
+token comma
+token key
+token comma
+token MAX_SIZE
+token closebracket
+token semicolon
+token hashmap
+token minus
+token greaterthan
+token key
+token opensquare
+token hsh
+token closesquare
+token stop
+token len
+token equals
+token key_length
+token semicolon
+token hashmap
+token minus
+token greaterthan
+token value
+token opensquare
+token hsh
+token closesquare
+token stop
+token value
+token equals
+token value
+token semicolon
+token hashmap
+token minus
+token greaterthan
+token value
+token opensquare
+token hsh
+token closesquare
+token stop
+token set
+token equals
+token 1
+token semicolon
+token closecurly
+token int
+add name_or_type name {'name': 'set_hashmap_nested'}
+determiner - openbracket
+Found function, return type: [type {'name': 'int'}, name {'name': 'set_hashmap_nested'}]
+PARAM LIST CALL
+[type {'name': 'int'}, name {'name': 'set_hashmap_nested'}]
+paramlist token struct
+token is  struct
+INNER PARAM LIST TOKEN hashmap
+Parsing raw expression body
+add name_or_type name {'name': 'hashmap'}
+determiner - asterisk
+determiner asterisk
+type declaration: [struct {}, name {'name': 'hashmap'}, pointer {}]
+determiner hashmap
+type declaration: [struct {}, type {'name': 'hashmap'}, pointer {}, name {'name': 'hashmap'}]
+peeked token comma
+paramlist token comma
+paramlist token char
+token is  char
+INNER PARAM LIST TOKEN key
+Parsing raw expression body
+add name_or_type name {'name': 'key'}
+determiner - opensquare
+determiner opensquare
+end of array
+type declaration: [type {'name': 'char'}, name {'name': 'key'}, array-empty {}]
+peeked token comma
+paramlist token comma
+paramlist token struct
+token is  struct
+INNER PARAM LIST TOKEN hashmap
+Parsing raw expression body
+add name_or_type name {'name': 'hashmap'}
+determiner - asterisk
+determiner asterisk
+type declaration: [struct {}, name {'name': 'hashmap'}, pointer {}]
+determiner nested
+type declaration: [struct {}, type {'name': 'hashmap'}, pointer {}, name {'name': 'nested'}]
+peeked token closebracket
+paramlist token closebracket
+param list
+function {}
+ name {'name': 'set_hashmap_nested'}
+ param-list {}
+  parameter {}
+   struct {}
+   type {'name': 'hashmap'}
+   pointer {}
+   name {'name': 'hashmap'}
+  parameter {}
+   type {'name': 'char'}
+   name {'name': 'key'}
+   array-empty {}
+  parameter {}
+   struct {}
+   type {'name': 'hashmap'}
+   pointer {}
+   name {'name': 'nested'}
+peeked token opencurly
+need to parse function body
+parsetoken begin unsigned
+leftmost is identitier {'name': 'unsigned'}
+expression body
+identitier {'name': 'unsigned'}
+parsetoken begin long
+leftmost is identitier {'name': 'long'}
+expression body
+identitier {'name': 'long'}
+parsetoken begin hsh
+leftmost is identitier {'name': 'hsh'}
+expression body
+identitier {'name': 'hsh'}
+parsetoken begin equals
+leftmost is equals {}
+expression body
+equals {}
+parsetoken begin hash
+leftmost is identitier {'name': 'hash'}
+expression body
+identitier {'name': 'hash'}
+parsetoken begin openbracket
+openbracket in parsetoken
+PARAM LIST CALL
+[]
+paramlist token key
+token is  key
+INNER PARAM LIST TOKEN closebracket
+param list
+function {}
+ param-list {}
+parsetoken, function,  [identifier {'name': 'key'}]
+leftmost is function {}
+ param-list {}
+expression body
+function {}
+ param-list {}
+token closebracket
+token percent
+token MAX_SIZE
+token semicolon
+token memcpy
+token openbracket
+token amper
+token openbracket
+token asterisk
+token hashmap
+token closebracket
+token stop
+token key
+token opensquare
+token hsh
+token closesquare
+token comma
+token key
+token comma
+token MAX_SIZE
+token closebracket
+token semicolon
+token hashmap
+token minus
+token greaterthan
+token value
+token opensquare
+token hsh
+token closesquare
+token stop
+token nested
+token equals
+token nested
+token minus
+token greaterthan
+token id
+token semicolon
+token closecurly
+token struct
+add name_or_type name {'name': 'hashmap_value'}
+determiner - asterisk
+determiner asterisk
+type declaration: [struct {}, name {'name': 'hashmap_value'}, pointer {}]
+determiner get_hashmap
+type declaration: [struct {}, type {'name': 'hashmap_value'}, pointer {}, name {'name': 'get_hashmap'}]
+peeked token openbracket
+[struct {}, type {'name': 'hashmap_value'}, pointer {}, name {'name': 'get_hashmap'}]
+token openbracket
+token struct
+add name_or_type name {'name': 'hashmap'}
+determiner - asterisk
+determiner asterisk
+type declaration: [struct {}, name {'name': 'hashmap'}, pointer {}]
+determiner hashmap
+type declaration: [struct {}, type {'name': 'hashmap'}, pointer {}, name {'name': 'hashmap'}]
+peeked token comma
+[struct {}, type {'name': 'hashmap'}, pointer {}, name {'name': 'hashmap'}]
+token comma
+token char
+add name_or_type name {'name': 'key'}
+determiner - opensquare
+determiner opensquare
+end of array
+type declaration: [type {'name': 'char'}, name {'name': 'key'}, array-empty {}]
+peeked token closebracket
+token closebracket
+token opencurly
+token unsigned
+token long
+token hsh
+token equals
+token hash
+token key
+token closebracket
+token percent
+token MAX_SIZE
+token semicolon
+token return
+token amper
+token hashmap
+token minus
+token greaterthan
+token value
+token opensquare
+token hsh
+token closesquare
+token semicolon
+token closecurly
+token struct
+add name_or_type name {'name': 'hashmap_value'}
+determiner - asterisk
+determiner asterisk
+type declaration: [struct {}, name {'name': 'hashmap_value'}, pointer {}]
+determiner get_hashmap_nested
+type declaration: [struct {}, type {'name': 'hashmap_value'}, pointer {}, name {'name': 'get_hashmap_nested'}]
+peeked token openbracket
+[struct {}, type {'name': 'hashmap_value'}, pointer {}, name {'name': 'get_hashmap_nested'}]
+token openbracket
+token struct
+add name_or_type name {'name': 'hashmap'}
+determiner - asterisk
+determiner asterisk
+type declaration: [struct {}, name {'name': 'hashmap'}, pointer {}]
+determiner hashmaps
+type declaration: [struct {}, type {'name': 'hashmap'}, pointer {}, name {'name': 'hashmaps'}]
+peeked token comma
+[struct {}, type {'name': 'hashmap'}, pointer {}, name {'name': 'hashmaps'}]
+token comma
+token struct
+add name_or_type name {'name': 'hashmap'}
+determiner - asterisk
+determiner asterisk
+type declaration: [struct {}, name {'name': 'hashmap'}, pointer {}]
+determiner hashmap
+type declaration: [struct {}, type {'name': 'hashmap'}, pointer {}, name {'name': 'hashmap'}]
+peeked token comma
+[struct {}, type {'name': 'hashmap'}, pointer {}, name {'name': 'hashmap'}]
+token comma
+token char
+add name_or_type name {'name': 'key'}
+determiner - opensquare
+determiner opensquare
+end of array
+type declaration: [type {'name': 'char'}, name {'name': 'key'}, array-empty {}]
+peeked token comma
+token comma
+token char
+add name_or_type name {'name': 'subkey'}
+determiner - opensquare
+determiner opensquare
+end of array
+type declaration: [type {'name': 'char'}, name {'name': 'subkey'}, array-empty {}]
+peeked token closebracket
+token closebracket
+token opencurly
+token unsigned
+token long
+token hsh
+token equals
+token hash
+token key
+token closebracket
+token percent
+token MAX_SIZE
+token semicolon
+token int
+add name_or_type name {'name': 'nested'}
+determiner - equals
+determiner equals
+type declaration: [type {'name': 'int'}, type {'name': 'nested'}, name {'name': 'equals'}]
+peeked token openbracket
+token openbracket
+token asterisk
+token hashmap
+token closebracket
+token stop
+token value
+token opensquare
+token hsh
+token closesquare
+token stop
+token nested
+token semicolon
+token return
+token get_hashmap
+token openbracket
+token amper
+token hashmaps
+token opensquare
+token nested
+token closesquare
+token comma
+token subkey
+token closebracket
+token semicolon
+token closecurly
+token void
+add name_or_type name {'name': 'clone_benchmark'}
+determiner - openbracket
+Found function, return type: [type {'name': 'void'}, pointer {}, name {'name': 'clone_benchmark'}]
+PARAM LIST CALL
+[type {'name': 'void'}, pointer {}, name {'name': 'clone_benchmark'}]
+paramlist token void
+token is  void
+INNER PARAM LIST TOKEN asterisk
+Parsing raw expression body
+add name_or_type name {'name': 'args'}
+determiner - closebracket
+determiner closebracket
+CLOSEBRACKET
+paramlist token closebracket
+param list
+function {}
+ name {'name': 'clone_benchmark'}
+ param-list {}
+  parameter {}
+   type {'name': 'void'}
+   pointer {}
+   name {'name': 'args'}
+peeked token opencurly
+need to parse function body
+parsetoken begin struct
+leftmost is identitier {'name': 'struct'}
+expression body
+identitier {'name': 'struct'}
+parsetoken begin work_def
+leftmost is identitier {'name': 'work_def'}
+expression body
+identitier {'name': 'work_def'}
+parsetoken begin asterisk
+leftmost is asterisk {}
+Consuming expression,  work
+parsetoken inner work
+candidate identitier {'name': 'work'}
+[identitier {'name': 'work'}]
+work not a subsumption expression
+Consuming expression,  equals
+parsetoken inner equals
+candidate equals {}
+[identitier {'name': 'work'}, equals {}]
+subsumption  equals
+Consuming expression,  args
+parsetoken inner args
+candidate identitier {'name': 'args'}
+[identitier {'name': 'args'}]
+args not a subsumption expression
+Consuming expression,  semicolon
+parsetoken inner semicolon
+candidate STOP
+expression body
+equals {}
+ asterisk {}
+  identitier {'name': 'work'}
+ identitier {'name': 'args'}
+parsetoken begin int
+leftmost is identitier {'name': 'int'}
+expression body
+identitier {'name': 'int'}
+parsetoken begin current
+leftmost is identitier {'name': 'current'}
+expression body
+identitier {'name': 'current'}
+parsetoken begin equals
+leftmost is equals {}
+expression body
+equals {}
+parsetoken begin 0
+leftmost is identitier {'name': '0'}
+expression body
+identitier {'name': '0'}
+parsetoken begin semicolon
+parsetoken begin struct
+leftmost is identitier {'name': 'struct'}
+expression body
+identitier {'name': 'struct'}
+parsetoken begin hashmap
+leftmost is identitier {'name': 'hashmap'}
+expression body
+identitier {'name': 'hashmap'}
+parsetoken begin asterisk
+leftmost is asterisk {}
+Consuming expression,  hashmaps
+parsetoken inner hashmaps
+candidate identitier {'name': 'hashmaps'}
+[identitier {'name': 'args'}, identitier {'name': 'hashmaps'}]
+hashmaps not a subsumption expression
+Consuming expression,  equals
+parsetoken inner equals
+candidate equals {}
+[identitier {'name': 'args'}, identitier {'name': 'hashmaps'}, equals {}]
+subsumption  equals
+Consuming expression,  calloc
+parsetoken inner calloc
+candidate identitier {'name': 'calloc'}
+[identitier {'name': 'calloc'}]
+calloc not a subsumption expression
+Consuming expression,  openbracket
+parsetoken inner openbracket
+openbracket in parsetoken
+PARAM LIST CALL
+[identitier {'name': 'calloc'}]
+paramlist token MAX_SIZE
+token is  MAX_SIZE
+INNER PARAM LIST TOKEN comma
+paramlist token comma
+paramlist token sizeof
+token is  sizeof
+INNER PARAM LIST TOKEN openbracket
+Nested param list
+PARAM LIST CALL
+[identifier {'name': 'MAX_SIZE'}, identifier {'name': 'sizeof'}]
+paramlist token struct
+token is  struct
+INNER PARAM LIST TOKEN hashmap
+Parsing raw expression body
+add name_or_type name {'name': 'hashmap'}
+determiner - closebracket
+determiner closebracket
+CLOSEBRACKET
+paramlist token closebracket
+param list
+function {}
+ identifier {'name': 'sizeof'}
+ param-list {}
+  parameter {}
+   struct {}
+   name {'name': 'hashmap'}
+paramlist token closebracket
+param list
+function {}
+ identitier {'name': 'calloc'}
+ param-list {}
+  parameter {}
+   identifier {'name': 'MAX_SIZE'}
+  parameter {}
+   function {}
+    identifier {'name': 'sizeof'}
+    param-list {}
+     parameter {}
+      struct {}
+      name {'name': 'hashmap'}
+parsetoken, function,  []
+candidate function {}
+ identitier {'name': 'calloc'}
+ param-list {}
+  parameter {}
+   identifier {'name': 'MAX_SIZE'}
+  parameter {}
+   function {}
+    identifier {'name': 'sizeof'}
+    param-list {}
+     parameter {}
+      struct {}
+      name {'name': 'hashmap'}
+[function {}
+ identitier {'name': 'calloc'}
+ param-list {}
+  parameter {}
+   identifier {'name': 'MAX_SIZE'}
+  parameter {}
+   function {}
+    identifier {'name': 'sizeof'}
+    param-list {}
+     parameter {}
+      struct {}
+      name {'name': 'hashmap'}]
+subsumption  openbracket
+Consuming expression,  semicolon
+parsetoken inner semicolon
+candidate STOP
+expression body
+function {}
+ identitier {'name': 'calloc'}
+ param-list {}
+  parameter {}
+   identifier {'name': 'MAX_SIZE'}
+  parameter {}
+   function {}
+    identifier {'name': 'sizeof'}
+    param-list {}
+     parameter {}
+      struct {}
+      name {'name': 'hashmap'}
+ equals {}
+  asterisk {}
+   identitier {'name': 'hashmaps'}
+  identitier {'name': 'calloc'}
+parsetoken begin printf
+leftmost is identitier {'name': 'printf'}
+expression body
+identitier {'name': 'printf'}
+parsetoken begin openbracket
+openbracket in parsetoken
+PARAM LIST CALL
+[]
+paramlist token quote
+token is  quote
+INNER PARAM LIST TOKEN Using
+Parsing raw expression body
+add name_or_type name {'name': 'Using'}
+determiner - percent
+determiner percent
+type declaration: [identifier {'name': 'quote'}, type {'name': 'Using'}, name {'name': 'percent'}]
+peeked token luGB
+paramlist token luGB
+token is  luGB
+INNER PARAM LIST TOKEN for
+Parsing raw expression body
+add name_or_type name {'name': 'for'}
+determiner - test
+determiner test
+type declaration: [identifier {'name': 'luGB'}, type {'name': 'for'}, name {'name': 'test'}]
+peeked token stop
+paramlist token stop
+token is  stop
+INNER PARAM LIST TOKEN backslash
+Parsing raw expression body
+add name_or_type name {'name': 'backslash'}
+determiner - n
+determiner n
+type declaration: [identifier {'name': 'stop'}, type {'name': 'backslash'}, name {'name': 'n'}]
+peeked token quote
+paramlist token quote
+token is  quote
+INNER PARAM LIST TOKEN comma
+paramlist token comma
+paramlist token MAX_SIZE
+token is  MAX_SIZE
+INNER PARAM LIST TOKEN asterisk
+Parsing raw expression body
+add name_or_type name {'name': 'sizeof'}
+determiner - openbracket
+Found function, return type: [identifier {'name': 'quote'}, identifier {'name': 'MAX_SIZE'}, pointer {}, name {'name': 'sizeof'}]
+PARAM LIST CALL
+[identifier {'name': 'quote'}, identifier {'name': 'MAX_SIZE'}, pointer {}, name {'name': 'sizeof'}]
+paramlist token struct
+token is  struct
+INNER PARAM LIST TOKEN hashmap
+Parsing raw expression body
+add name_or_type name {'name': 'hashmap'}
+determiner - closebracket
+determiner closebracket
+CLOSEBRACKET
+paramlist token closebracket
+param list
+function {}
+ name {'name': 'sizeof'}
+ param-list {}
+  parameter {}
+   struct {}
+   name {'name': 'hashmap'}
+peeked token divide
+paramlist token divide
+token is  divide
+INNER PARAM LIST TOKEN 1024
+Parsing raw expression body
+add name_or_type name {'name': '1024'}
+determiner - divide
+determiner divide
+type declaration: [identifier {'name': 'divide'}, type {'name': '1024'}, name {'name': 'divide'}]
+peeked token 1024
+paramlist token 1024
+token is  1024
+INNER PARAM LIST TOKEN divide
+Parsing raw expression body
+add name_or_type name {'name': 'divide'}
+determiner - 1024
+determiner 1024
+type declaration: [identifier {'name': '1024'}, type {'name': 'divide'}, name {'name': '1024'}]
+peeked token closebracket
+paramlist token closebracket
+param list
+function {}
+ param-list {}
+  parameter {}
+   identifier {'name': 'quote'}
+   type {'name': 'Using'}
+   name {'name': 'percent'}
+  parameter {}
+   identifier {'name': 'luGB'}
+   type {'name': 'for'}
+   name {'name': 'test'}
+  parameter {}
+   identifier {'name': 'stop'}
+   type {'name': 'backslash'}
+   name {'name': 'n'}
+  parameter {}
+   identifier {'name': 'quote'}
+  parameter {}
+  parameter {}
+   identifier {'name': 'divide'}
+   type {'name': '1024'}
+   name {'name': 'divide'}
+  parameter {}
+   identifier {'name': '1024'}
+   type {'name': 'divide'}
+   name {'name': '1024'}
+parsetoken, function,  []
+leftmost is function {}
+ param-list {}
+  parameter {}
+   identifier {'name': 'quote'}
+   type {'name': 'Using'}
+   name {'name': 'percent'}
+  parameter {}
+   identifier {'name': 'luGB'}
+   type {'name': 'for'}
+   name {'name': 'test'}
+  parameter {}
+   identifier {'name': 'stop'}
+   type {'name': 'backslash'}
+   name {'name': 'n'}
+  parameter {}
+   identifier {'name': 'quote'}
+  parameter {}
+  parameter {}
+   identifier {'name': 'divide'}
+   type {'name': '1024'}
+   name {'name': 'divide'}
+  parameter {}
+   identifier {'name': '1024'}
+   type {'name': 'divide'}
+   name {'name': '1024'}
+expression body
+function {}
+ param-list {}
+  parameter {}
+   identifier {'name': 'quote'}
+   type {'name': 'Using'}
+   name {'name': 'percent'}
+  parameter {}
+   identifier {'name': 'luGB'}
+   type {'name': 'for'}
+   name {'name': 'test'}
+  parameter {}
+   identifier {'name': 'stop'}
+   type {'name': 'backslash'}
+   name {'name': 'n'}
+  parameter {}
+   identifier {'name': 'quote'}
+  parameter {}
+  parameter {}
+   identifier {'name': 'divide'}
+   type {'name': '1024'}
+   name {'name': 'divide'}
+  parameter {}
+   identifier {'name': '1024'}
+   type {'name': 'divide'}
+   name {'name': '1024'}
+parsetoken begin semicolon
+parsetoken begin while
+leftmost is identitier {'name': 'while'}
+expression body
+identitier {'name': 'while'}
+parsetoken begin openbracket
+openbracket in parsetoken
+PARAM LIST CALL
+[]
+paramlist token work
+token is  work
+INNER PARAM LIST TOKEN minus
+Parsing raw expression body
+add name_or_type name {'name': 'minus'}
+determiner - greaterthan
+determiner greaterthan
+type declaration: [identifier {'name': 'work'}, type {'name': 'minus'}, name {'name': 'greaterthan'}]
+peeked token running
+paramlist token running
+token is  running
+INNER PARAM LIST TOKEN equals
+Parsing raw expression body
+add name_or_type name {'name': 'equals'}
+determiner - equals
+determiner equals
+type declaration: [identifier {'name': 'running'}, type {'name': 'equals'}, name {'name': 'equals'}]
+peeked token 1
+paramlist token 1
+token is  1
+INNER PARAM LIST TOKEN closebracket
+param list
+function {}
+ param-list {}
+  parameter {}
+   identifier {'name': 'work'}
+   type {'name': 'minus'}
+   name {'name': 'greaterthan'}
+  parameter {}
+   identifier {'name': 'running'}
+   type {'name': 'equals'}
+   name {'name': 'equals'}
+parsetoken, function,  [identifier {'name': '1'}]
+leftmost is function {}
+ param-list {}
+  parameter {}
+   identifier {'name': 'work'}
+   type {'name': 'minus'}
+   name {'name': 'greaterthan'}
+  parameter {}
+   identifier {'name': 'running'}
+   type {'name': 'equals'}
+   name {'name': 'equals'}
+expression body
+function {}
+ param-list {}
+  parameter {}
+   identifier {'name': 'work'}
+   type {'name': 'minus'}
+   name {'name': 'greaterthan'}
+  parameter {}
+   identifier {'name': 'running'}
+   type {'name': 'equals'}
+   name {'name': 'equals'}
+token closebracket
+token opencurly
+token memcpy
+token openbracket
+token amper
+token hashmaps
+token opensquare
+token current
+token plus
+token plus
+token closesquare
+token comma
+token work
+token minus
+token greaterthan
+token hashmap
+token comma
+token sizeof
+token openbracket
+token struct
+add name_or_type name {'name': 'hashmap'}
+determiner - closebracket
+determiner closebracket
+CLOSEBRACKET
+[struct {}, name {'name': 'hashmap'}]
+token closebracket
+token closebracket
+token semicolon
+token current
+token equals
+token current
+token percent
+token MAX_SIZE
+token semicolon
+token work
+token minus
+token greaterthan
+token count
+token plus
+token plus
+token semicolon
+token closecurly
+token closecurly
+token int
+add name_or_type name {'name': 'convert_to_hex'}
+determiner - openbracket
+Found function, return type: [type {'name': 'int'}, name {'name': 'convert_to_hex'}]
+PARAM LIST CALL
+[type {'name': 'int'}, name {'name': 'convert_to_hex'}]
+paramlist token char
+token is  char
+INNER PARAM LIST TOKEN c
+Parsing raw expression body
+add name_or_type name {'name': 'c'}
+determiner - closebracket
+determiner closebracket
+CLOSEBRACKET
+paramlist token closebracket
+param list
+function {}
+ name {'name': 'convert_to_hex'}
+ param-list {}
+  parameter {}
+   type {'name': 'char'}
+   name {'name': 'c'}
+peeked token opencurly
+need to parse function body
+parsetoken begin if
+leftmost is if-statement {}
+ c {}
+ greaterthan {}
+ equals {}
+ singlequote {}
+ 0 {}
+ singlequote {}
+ amper {}
+ amper {}
+ c {}
+ lessthan {}
+ equals {}
+ singlequote {}
+ 9 {}
+ singlequote {}
+ closebracket {}
+expression body
+if-statement {}
+ c {}
+ greaterthan {}
+ equals {}
+ singlequote {}
+ 0 {}
+ singlequote {}
+ amper {}
+ amper {}
+ c {}
+ lessthan {}
+ equals {}
+ singlequote {}
+ 9 {}
+ singlequote {}
+ closebracket {}
+parsetoken begin opencurly
+leftmost is None
 expression body
